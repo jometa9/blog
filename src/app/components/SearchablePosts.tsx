@@ -1,0 +1,35 @@
+"use client";
+import { useState } from "react";
+import { PostMetadata } from "../../../components/PostMetadata";
+import PostPreview from "../../../components/PostPreview";
+
+interface SearchablePostsProps {
+  posts: PostMetadata[];
+}
+
+const SearchablePosts: React.FC<SearchablePostsProps> = ({ posts = [] }) => {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const filteredPosts = posts.filter((post) =>
+    post.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const postPreviews = filteredPosts.map((post) => (
+    <PostPreview key={post.slug} {...post} />
+  ));
+
+  return (
+    <>
+      <input
+        placeholder="Search posts"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
+      <p></p>
+      <hr />
+      {postPreviews}
+    </>
+  );
+};
+
+export default SearchablePosts;

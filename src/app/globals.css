@@ -1,0 +1,35 @@
+* {
+  font-family: monospace;
+  box-sizing: border-box;
+  color: #000;
+  transition: background-color 0.3s, color 0.3s;
+}
+body {
+  max-width: 700px;
+  padding: 5px 12.5px 10px 12.5px;
+  margin: 0 auto;
+}
+img {
+  width: 100%;
+}
+iframe {
+  aspect-ratio: 16 / 9;
+  border: none;
+  width: 100%;
+}
+h2 {
+  margin-bottom: 0;
+  margin-top: 10px;
+  padding-bottom: 0;
+}
+input {
+  width: 100%;
+  border: none;
+  padding-top: 5px;
+  margin-left: 0;
+  padding-left: 0;
+}
+input:focus {
+  outline: none !important;
+  border: none;
+}
