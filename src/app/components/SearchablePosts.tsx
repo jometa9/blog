@@ -23,7 +23,6 @@ const SearchablePosts: React.FC<SearchablePostsProps> = ({ posts = [] }) => {
       <p>Documenting the journey</p>
       <p>Find me on <a href="https://www.linkedin.com/in/joaquinmetayer/" target="_blank">LinkedIn</a> and  <a href="https://github.com/joaquinmetayer" target="_blank">GitHub</a></p>
       <p>Total posts: {posts.length}</p>
-      <img src="/images/IMG_4718.png" style={{width: '400px'}} />
       <hr />
       <input
         placeholder="Search posts"
