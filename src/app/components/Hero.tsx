@@ -9,8 +9,6 @@ export default function Hero() {
       <h2>
         <Link href="/">Joaquin Metayer</Link>
       </h2>
-      <p>Documenting the journey</p>
-      <hr />
     </>
   );
 }
