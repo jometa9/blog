@@ -7,7 +7,7 @@ interface SearchablePostsProps {
   posts: PostMetadata[];
 }
 
-const SearchablePosts: React.FC<SearchablePostsProps> = ({ posts = [] }) => {
+const BlogHome: React.FC<SearchablePostsProps> = ({ posts = [] }) => {
   const [searchTerm, setSearchTerm] = useState("");
 
   const filteredPosts = posts.filter((post) =>
@@ -36,4 +36,4 @@ const SearchablePosts: React.FC<SearchablePostsProps> = ({ posts = [] }) => {
   );
 };
 
-export default SearchablePosts;
+export default BlogHome;

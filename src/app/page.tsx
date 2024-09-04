@@ -1,9 +1,8 @@
-import Link from "next/link";
 import getPostMetadata from "../../components/getPostMetadata";
-import SearchablePosts from "./components/SearchablePosts";
+import BlogHome from "./components/BlogHome";
 
 export default function Home() {
-  const { posts, lastPostDate } = getPostMetadata();
+  const { posts } = getPostMetadata();
 
-  return <SearchablePosts posts={posts} />;
+  return <BlogHome posts={posts} />;
 }
