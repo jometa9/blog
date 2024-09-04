@@ -70,7 +70,7 @@ export default function CreatePost() {
           if (imageExists) {
             modifiedContent = modifiedContent.replace(
               new RegExp(`\\b${match}\\b`, "g"),
-              `<a href="/images/${match}" target="_blank"><img src="/images/${match}" alt="${match}" /></a>`
+              `<a href="/blog/images/${match}" target="_blank"><img src="/blog/images/${match}" alt="${match}" /></a>`
             );
           }
         });
