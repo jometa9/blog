@@ -3,6 +3,7 @@
   box-sizing: border-box;
   color: #000;
   transition: background-color 0.3s, color 0.3s;
+  user-select: none;
 }
 body {
   max-width: 700px;
