@@ -21,11 +21,11 @@ const BlogHome: React.FC<SearchablePostsProps> = ({ posts = [] }) => {
   return (
     <>
       <p>Documenting the journey</p>
-      <p>Find me on <a href="https://www.linkedin.com/in/joaquinmetayer/" target="_blank">LinkedIn</a> and  <a href="https://github.com/joaquinmetayer" target="_blank">GitHub</a></p>
+      <p><a href="https://www.linkedin.com/in/joaquinmetayer/" target="_blank">LinkedIn</a> <a href="https://github.com/joaquinmetayer" target="_blank">GitHub</a></p>
       <p>Total posts: {posts.length}</p>
       <hr />
       <input
-        placeholder="Search posts"
+        placeholder="Buscar posts"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
