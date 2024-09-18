@@ -32,7 +32,7 @@ const BlogHome: React.FC<SearchablePostsProps> = ({ posts = [] }) => {
       <p>Total posts: {posts.length}</p>
       <hr />
       <input
-        placeholder="Buscar posts"
+        placeholder="Search posts"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
