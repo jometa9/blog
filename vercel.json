@@ -1,8 +1,9 @@
 {
     "functions": {
       "api/*": {
-        "excludeFiles": "pages/api/*"
+        "excludeFiles": "pages/api/**"
       }
-    }
+    },
+    "ignoreCommand": "if [[ $VERCEL_ENV == \"production\" ]]; then exit 0; fi"
   }
   
