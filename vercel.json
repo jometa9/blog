@@ -1,6 +1,8 @@
 {
-    "ignoreFiles": [
-      "pages/api/**"
-    ]
+    "functions": {
+      "api/*": {
+        "excludeFiles": "pages/api/**"
+      }
+    }
   }
   
