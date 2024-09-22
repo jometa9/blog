@@ -20,32 +20,21 @@ const BlogHome: React.FC<SearchablePostsProps> = ({ posts = [] }) => {
 
   return (
     <>
-      <p>Hey there! 👋 I'm Joaquin Metayer,</p>
+      <p>Hey there! I'm Joaquin</p>
       <p>
-        <b>React developer</b> sharing the journey.
+        A <b>React developer</b> documenting the journey.
       </p>
       <p>Now, focusing on AWS Cloud.</p>
       <p>
-        Creating on{" "}
-        <a target="_blank" href="https://github.com/joaquinmetayer/">
-          GitHub
-        </a>{" "}
-        and working at{" "}
-        <a target="_blank" href="https://www.instagram.com/bitlogic.io/">
-          @bitlogic.io
-        </a>
-        .
-      </p>
-      <p>
-        Find me on{" "}
         <a href="https://www.linkedin.com/in/joaquinmetayer/" target="_blank">
           LinkedIn
         </a>{" "}
-        or{" "}
+        <a target="_blank" href="https://github.com/joaquinmetayer/">
+          GitHub
+        </a>{" "}
         <a target="_blank" href="mailto:joaquinmetayer@gmail.com">
-          email
+          Email
         </a>
-        .
       </p>
       <p>Total posts: {posts.length}</p>
       <input

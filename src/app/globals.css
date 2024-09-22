@@ -1,7 +1,7 @@
 * {
   font-family: monospace;
   box-sizing: border-box;
-  transition: background-color 0.3s, color 0.3s;
+  color: #000;
 }
 body {
   max-width: 700px;
