@@ -1,24 +1,11 @@
-blog de la charla de beerjs con el video completo + el recorte de lo mio
-post con solo mi parte del beerjs con todo lo de la diapositiva en imagenese
 tutorial de como crear endpoints webscraping playwright
-aprendiendo sobre webhooks
-session, mensajeria en blockchain (gratis), mejor que telegram
-seguridad y ser *casi* invisible en internet
-multiples procesos a la vez con nodejs
+webhooks vs websocketss
 database 101 (conceptos basicos de base de datos)
 mi experiencia rindiendo aws cloud practitioner
-el placer de alejarse de las redes sociales y trabajar en silencio
-porque debes lucir pobre
-los b2b no necesitan redes sociales
-porque crear mocks de tus endpoints apis?
-excel con esteroides, airtable
-proton reemplaza google
-el placer de trabajar en silencio (o casi)
-coldwallet ledger
-trust wallet, para que sirven?
-escribir, a persar que nadie me lea (o eso creo)
-hora de volver a operar
-entrando en la mesa chica
-no hagas negocios con amigos sin antes saber esto
-viva el capitalismo
-vida simple !== vida facil
+mocks de examen aws developer
+mocks de examen aws architect
+patrones arquitectura backend nodejs
+express vs adonisjs
+manejo de sesiones en react frontend
+my new fav: adonisjs
+adonisjs basicos
