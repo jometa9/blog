@@ -26,7 +26,7 @@ const BlogHome: React.FC<SearchablePostsProps> = ({ posts = [] }) => {
         </a>{" "}
         <a target="_blank" href="https://github.com/joaquinmetayer/">
           GitHub
-        </a>{" "}
+        </a>{" "} 
         <a target="_blank" href="mailto:joaquinmetayer@gmail.com">
           Email
         </a>
