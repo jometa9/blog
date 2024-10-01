@@ -20,11 +20,6 @@ const BlogHome: React.FC<SearchablePostsProps> = ({ posts = [] }) => {
 
   return (
     <>
-      <p>Hey there! I'm Joaquin</p>
-      <p>
-        A <b>React developer</b> documenting the journey.
-      </p>
-      <p>Now, focusing on AWS Cloud.</p>
       <p>
         <a href="https://www.linkedin.com/in/joaquinmetayer/" target="_blank">
           LinkedIn
