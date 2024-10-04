@@ -4,7 +4,7 @@ import Hero from "./components/Hero";
 import 'highlight.js/styles/github.css';
 
 export const metadata: Metadata = {
-  title: "Joaquin Metayer",
+  title: "JOAQUIN METAYER",
 };
 
 export default function RootLayout({

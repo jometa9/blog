@@ -5,7 +5,8 @@
 }
 body {
   max-width: 700px;
-  padding: 5px 12.5px 10px 12.5px;
+  padding: 60px 12.5px 10px 12.5px;
+  margin: 0 auto;
 }
 img {
   width: 100%;
@@ -15,10 +16,13 @@ iframe {
   border: none;
   width: 100%;
 }
-h2 {
-  margin-bottom: 0;
+h1 {
   margin-top: 5px;
   padding-bottom: 0;
+  text-align: center;
+}
+h1 a{
+  text-decoration: none;
 }
 input {
   width: 100%;
@@ -29,4 +33,20 @@ input {
 input:focus {
   outline: none !important;
   border: none;
+}
+hr{
+  margin: 50px 0;
+  color: #00000080;
+  border: solid 1px #00000020;
+}
+.hero{
+  text-align: center;
+}
+.links{
+  margin-bottom: 40px;
+}
+.links a{
+  padding: 0 5px;
+  text-decoration: none;
+  color: #00000050;
 }

@@ -18,28 +18,7 @@ const BlogHome: React.FC<SearchablePostsProps> = ({ posts = [] }) => {
     <PostPreview key={post.slug} {...post} />
   ));
 
-  return (
-    <>
-      <p>
-        <a href="https://www.linkedin.com/in/joaquinmetayer/" target="_blank">
-          LinkedIn
-        </a>{" "}
-        <a target="_blank" href="https://github.com/joaquinmetayer/">
-          GitHub
-        </a>{" "} 
-        <a target="_blank" href="mailto:joaquinmetayer@gmail.com">
-          Email
-        </a>
-      </p>
-      <p>Total posts: {posts.length}</p>
-      <input
-        placeholder="Search posts here"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-      />
-      {postPreviews}
-    </>
-  );
+  return <>{postPreviews}</>;
 };
 
 export default BlogHome;
