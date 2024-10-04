@@ -11,9 +11,6 @@ export default function Hero() {
           <a href="https://www.linkedin.com/in/joaquinmetayer/" target="_blank">
             LinkedIn
           </a>
-          <a href="https://www.youtube.com/channel/UChepHxgZmukOteW-6c796wQ" target="_blank">
-            YouTube
-          </a>
           <a target="_blank" href="https://github.com/joaquinmetayer/">
             GitHub
           </a>
