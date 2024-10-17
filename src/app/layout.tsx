@@ -4,7 +4,7 @@ import Hero from "./components/Hero";
 import 'highlight.js/styles/github.css';
 
 export const metadata: Metadata = {
-  title: "JOAQUIN METAYER",
+  title: "jometa",
 };
 
 export default function RootLayout({
@@ -14,10 +14,7 @@ export default function RootLayout({
 }) {
 
   return (
-    <html lang="es">
-      <head>
-        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-      </head>
+    <html lang="en">
       <body>
         <Hero/>
         {children}
