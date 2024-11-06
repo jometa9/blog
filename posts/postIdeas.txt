@@ -9,3 +9,13 @@ express vs adonisjs
 manejo de sesiones en react frontend
 my new fav: adonisjs
 adonisjs basicos
+como dockerizar tu app backend nodejs
+planificacion round robin
+balanceador de carga en tu aplciacion y distribucion rund robin
+procesos bachs / crons nodejs
+el 20% generara el 80% restante
+x meses sin redes sociales
+mi tool favorita: Notion Calendar
+trabajos mas dedicados, los menos pagados
+accionar contracorriente
+mi experienca rindiendo aws assosiate developer
