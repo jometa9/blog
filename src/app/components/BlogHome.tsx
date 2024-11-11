@@ -42,8 +42,14 @@ const BlogHome: React.FC<SearchablePostsProps> = ({ posts = [] }) => {
       </p>
       <p>
         Find more on{" "}
-        <a href="https://www.linkedin.com/in/joaquinmetayer/">LinkedIn</a> or{" "}
-        <a href="https://www.instagram.com/joaquinmetayer/">Instagram</a>.
+        <a href="https://www.linkedin.com/in/joaquinmetayer/" target="_blank">
+          LinkedIn
+        </a>{" "}
+        or{" "}
+        <a href="https://www.instagram.com/joaquinmetayer/" target="_blank">
+          Instagram
+        </a>
+        .
       </p>
       <hr />
       <input
