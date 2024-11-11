@@ -21,6 +21,7 @@ const getPostMetadata = (): { posts: PostMetadataWithDate[], lastPostDate: strin
       return {
         date: matterResult.data.date,
         title: matterResult.data.title,
+        visible: matterResult.data.visible,
         slug: fileName.replace(".md", ""),
       } as PostMetadataWithDate;
     })

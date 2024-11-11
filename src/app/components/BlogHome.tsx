@@ -10,15 +10,42 @@ interface SearchablePostsProps {
 const BlogHome: React.FC<SearchablePostsProps> = ({ posts = [] }) => {
   const [searchTerm, setSearchTerm] = useState("");
 
-  const filteredPosts = posts.filter((post) =>
-    post.title.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredPosts = posts
+    .filter((post) =>
+      post.title.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+    .filter((post) => post.visible);
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(event.target.value);
+  };
 
   const postPreviews = filteredPosts.map((post) => (
     <PostPreview key={post.slug} {...post} />
   ));
 
-  return <>{postPreviews}</>;
+  return (
+    <>
+      <p>Status: Working, no writing.</p>
+      <p>
+        This website is a raw document and archive about the journey since 2022
+        with {postPreviews.length} posts.
+      </p>
+      <p>
+        Find more on{" "}
+        <a href="https://www.linkedin.com/in/joaquinmetayer/">LinkedIn</a> or{" "}
+        <a href="https://www.instagram.com/joaquinmetayer/">Instagram</a>.
+      </p>
+      <hr />
+      <input
+        type="text"
+        placeholder="Search post..."
+        value={searchTerm}
+        onChange={handleSearchChange}
+      />
+      <hr />
+      {postPreviews}
+    </>
+  );
 };
 
 export default BlogHome;
