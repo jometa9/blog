@@ -7,13 +7,23 @@ interface SearchablePostsProps {
   posts: PostMetadata[];
 }
 
+const parseDate = (dateString: string) => {
+  const [day, month, year] = dateString.split("-").map(Number);
+  return new Date(year, month - 1, day);
+};
+
 const BlogHome: React.FC<SearchablePostsProps> = ({ posts = [] }) => {
   const [searchTerm, setSearchTerm] = useState("");
+  const today = new Date();
 
   const filteredPosts = posts
     .filter((post) =>
       post.title.toLowerCase().includes(searchTerm.toLowerCase())
     )
+    .filter((post) => {
+      const postDate = parseDate(post.date);
+      return postDate <= today;
+    })
     .filter((post) => post.visible);
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);

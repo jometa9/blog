@@ -6,7 +6,10 @@ interface PostMetadataWithDate extends PostMetadata {
   date: string;
 }
 
-const getPostMetadata = (): { posts: PostMetadataWithDate[], lastPostDate: string | null } => {
+const getPostMetadata = (): {
+  posts: PostMetadataWithDate[];
+  lastPostDate: string | null;
+} => {
   const folder = `posts/`;
   const files = fs.readdirSync(folder);
   const markdownPosts = files.filter((file) => file.endsWith(".md"));
@@ -14,17 +17,16 @@ const getPostMetadata = (): { posts: PostMetadataWithDate[], lastPostDate: strin
   const currentDate = new Date();
   currentDate.setDate(currentDate.getDate() - 1);
 
-  const posts = markdownPosts
-    .map((fileName) => {
-      const fileContents = fs.readFileSync(`posts/${fileName}`, "utf8");
-      const matterResult = matter(fileContents);
-      return {
-        date: matterResult.data.date,
-        title: matterResult.data.title,
-        visible: matterResult.data.visible,
-        slug: fileName.replace(".md", ""),
-      } as PostMetadataWithDate;
-    })
+  const posts = markdownPosts.map((fileName) => {
+    const fileContents = fs.readFileSync(`posts/${fileName}`, "utf8");
+    const matterResult = matter(fileContents);
+    return {
+      date: matterResult.data.date,
+      title: matterResult.data.title,
+      visible: matterResult.data.visible,
+      slug: fileName.replace(".md", ""),
+    } as PostMetadataWithDate;
+  });
 
   posts.sort((a, b) => {
     const [aDay, aMonth, aYear] = a.date.split("-");
