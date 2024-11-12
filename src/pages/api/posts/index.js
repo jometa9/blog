@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import getPostMetadata from "components/getPostMetadata";
+import corsMiddleware from "src/utils/cors";
 
 const generateUniqueFileName = (dateStr, existingFiles) => {
   let fileName = `${dateStr}.md`;
@@ -15,7 +16,10 @@ const generateUniqueFileName = (dateStr, existingFiles) => {
   return fileName;
 };
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
+  // Ejecuta el middleware de CORS
+  await corsMiddleware(req, res);
+
   if (req.method === "GET") {
     const { posts, lastPostDate } = getPostMetadata();
     res.status(200).json({ posts, lastPostDate });

@@ -1,8 +1,12 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import corsMiddleware from "src/utils/cors";
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
+  // Ejecuta el middleware de CORS
+  await corsMiddleware(req, res);
+
   const { slug } = req.query;
   const filePath = path.join(process.cwd(), "posts", `${slug}.md`);
 

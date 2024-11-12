@@ -6,7 +6,11 @@ export default function AdminLayout({ children }) {
   const router = useRouter();
 
   const handleLogout = async () => {
-    const response = await fetch("/api/auth/logout", { method: "POST" });
+    const response = await fetch("/api/auth/logout", { method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+      },
+     });
     if (response.ok) {
       router.push("/admin/login");
     }

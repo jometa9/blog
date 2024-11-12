@@ -19,6 +19,7 @@
     "@types/three": "^0.150.0",
     "axios": "^1.7.2",
     "cookie": "^1.0.1",
+    "cors": "^2.8.5",
     "formidable": "^3.5.1",
     "framer-motion": "^10.9.2",
     "fs": "^0.0.1-security",

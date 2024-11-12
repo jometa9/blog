@@ -18,6 +18,9 @@ export default function AdminPostPreview({
     try {
       const response = await fetch(`/api/posts/${post.slug}/toggleVisibility`, {
         method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+        },
       });
       const data = await response.json();
       if (data.success) {
@@ -33,6 +36,9 @@ export default function AdminPostPreview({
       try {
         const response = await fetch(`/api/posts/${post.slug}`, {
           method: "DELETE",
+          headers: {
+            'Content-Type': 'application/json',
+          },
         });
         const data = await response.json();
         if (data.success) {
