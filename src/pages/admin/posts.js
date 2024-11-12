@@ -42,6 +42,9 @@ export default function AdminPosts() {
     post.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  if (typeof window !== "undefined" && window.location.hostname !== "localhost")
+    return null;
+
   return (
     <AdminLayout>
       <p>

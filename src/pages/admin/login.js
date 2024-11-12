@@ -33,6 +33,9 @@ export default function Login() {
     }
   };
 
+  if (typeof window !== "undefined" && window.location.hostname !== "localhost")
+    return null;
+  
   return (
     <AdminLayout>
       <form onSubmit={handleSubmit}>

@@ -39,6 +39,9 @@ export default function CreatePost() {
 
   if (loading) return <p>Loading...</p>;
 
+  if (typeof window !== "undefined" && window.location.hostname !== "localhost")
+    return null;
+  
   return (
     <AdminLayout>
       <PostForm post={post} isEditMode={!!slug} />
