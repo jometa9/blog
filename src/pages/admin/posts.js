@@ -1,10 +1,21 @@
 import { useEffect, useState } from "react";
 import AdminLayout from "../../../components/AdminLayout";
 import AdminPostPreview from "../../../components/AdminPostPreview";
+import { useRouter } from "next/router";
 
 export default function AdminPosts() {
   const [posts, setPosts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const router = useRouter();
+
+  useEffect(() => {
+    if (
+      typeof window !== "undefined" &&
+      window.location.hostname !== "localhost"
+    ) {
+      router.push("/");
+    }
+  }, [router]);
 
   useEffect(() => {
     const fetchPosts = async () => {

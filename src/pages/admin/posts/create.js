@@ -11,6 +11,15 @@ export default function CreatePost() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (
+      typeof window !== "undefined" &&
+      window.location.hostname !== "localhost"
+    ) {
+      router.push("/");
+    }
+  }, [router]);
+
+  useEffect(() => {
     if (slug) {
       const fetchPostData = async () => {
         const response = await fetch(`/api/posts/${slug}`);
