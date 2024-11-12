@@ -1,6 +1,7 @@
 * {
   font-family: monospace;
   box-sizing: border-box;
+  color: #000;
 }
 body {
   max-width: 700px;
@@ -15,25 +16,27 @@ iframe {
   border: none;
   width: 100%;
 }
-input{
+input {
   border: none;
   width: 100%;
   padding: 5px 0;
   outline: "none";
 }
-input[type="text"]:focus, input[type="password"]:focus{
+input[type="text"]:focus,
+input[type="password"]:focus {
   outline: none;
   box-shadow: none;
 }
-button{
+button {
   cursor: pointer;
 }
-select{
+select {
   border: none;
   margin: 0;
   padding: 0;
 }
-textarea, textarea:focus{
+textarea,
+textarea:focus {
   width: 100%;
   outline: none;
   box-shadow: none;
