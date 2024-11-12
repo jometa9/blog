@@ -35,7 +35,7 @@ const BlogHome: React.FC<SearchablePostsProps> = ({ posts = [] }) => {
 
   return (
     <>
-      <p>Status: Working, no writing.</p>
+      <p>Status: Working.</p>
       <p>
         This website is a raw document and archive about the journey since 2022
         with {postPreviews.length} posts.
