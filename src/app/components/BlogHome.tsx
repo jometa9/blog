@@ -41,13 +41,9 @@ const BlogHome: React.FC<SearchablePostsProps> = ({ posts = [] }) => {
         with {postPreviews.length} posts.
       </p>
       <p>
-        Find more on{" "}
+        Find me only on{" "}
         <a href="https://www.linkedin.com/in/joaquinmetayer/" target="_blank">
           LinkedIn
-        </a>{" "}
-        or{" "}
-        <a href="https://www.instagram.com/joaquinmetayer/" target="_blank">
-          Instagram
         </a>
         .
       </p>
