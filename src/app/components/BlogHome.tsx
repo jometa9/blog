@@ -35,26 +35,21 @@ const BlogHome: React.FC<SearchablePostsProps> = ({ posts = [] }) => {
 
   return (
     <>
-      <p>Status: Working.</p>
       <p>
-        This website is a raw document and archive about the journey since 2022
-        with {postPreviews.length} posts.
-      </p>
-      <p>
-        Find me only on{" "}
-        <a href="https://www.linkedin.com/in/joaquinmetayer/" target="_blank">
+        Find me on{" "}
+        <a href="https://www.youtube.com/@jometayer" target="_blank">
+          YouTube
+        </a>
+        ,{" "}
+        <a href="https://www.linkedin.com/in/joaquinmetayer" target="_blank">
           LinkedIn
         </a>
-        .
+        , or{" "}
+        <a href="https://www.instagram.com/jometayer" target="_blank">
+          Instagram
+        </a>.
       </p>
-      <hr />
-      <input
-        type="text"
-        placeholder="Search post..."
-        value={searchTerm}
-        onChange={handleSearchChange}
-      />
-      <hr />
+
       {postPreviews}
     </>
   );
