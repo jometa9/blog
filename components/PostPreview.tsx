@@ -10,7 +10,7 @@ const PostPreview = (props: PostMetadata) => {
 
   return (
     <p style={titleStyle}>
-      {props.date} <Link href={`/posts/${props.slug}`}>{props.title}</Link>
+      {props.date} <Link href={`/blog/posts/${props.slug}`}>{props.title}</Link>
     </p>
   );
 };

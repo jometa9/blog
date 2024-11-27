@@ -1,7 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import Hero from "./components/Hero";
 import 'highlight.js/styles/github.css';
+import Home from "./page";
 
 export const metadata: Metadata = {
   title: "jometayer",
@@ -16,7 +16,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Hero/>
         {children}
       </body>
     </html>

@@ -1,8 +1,5 @@
-import getPostMetadata from "../../components/getPostMetadata";
-import BlogHome from "./components/BlogHome";
+import HomeDeveloper from "./components/HomeDeveloper";
 
 export default function Home() {
-  const { posts } = getPostMetadata();
-
-  return <BlogHome posts={posts} />;
+  return <HomeDeveloper />;
 }

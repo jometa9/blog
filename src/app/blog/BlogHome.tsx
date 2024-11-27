@@ -33,9 +33,9 @@ const BlogHome: React.FC<SearchablePostsProps> = ({ posts = [] }) => {
     <PostPreview key={post.slug} {...post} />
   ));
 
-  return (
-    <>
-      <p>
+  {
+    /*
+     <p>
         Find me on{" "}
         <a href="https://www.youtube.com/@jometayer" target="_blank">
           YouTube
@@ -49,10 +49,9 @@ const BlogHome: React.FC<SearchablePostsProps> = ({ posts = [] }) => {
           Instagram
         </a>.
       </p>
-
-      {postPreviews}
-    </>
-  );
+  */
+  }
+  return <>{postPreviews}</>;
 };
 
 export default BlogHome;

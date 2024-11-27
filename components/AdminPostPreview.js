@@ -55,7 +55,7 @@ export default function AdminPostPreview({
   return (
     <div style={{ display: "flex", alignItems: "center" }}>
       <p style={{ flex: 1, ...titleStyle }}>
-        <Link href={`/posts/${post.slug}`}>{post.title}</Link>
+        <Link href={`/blog/posts/${post.slug}`}>{post.title}</Link>
       </p>
       <div style={{ marginLeft: "10px" }}>
         <button onClick={handleVisibilityToggle} style={{ marginLeft: "10px" }}>
