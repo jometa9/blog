@@ -6,11 +6,12 @@ export default function AdminLayout({ children }) {
   const router = useRouter();
 
   const handleLogout = async () => {
-    const response = await fetch("/api/auth/logout", { method: "POST",
+    const response = await fetch("/api/auth/logout", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
-     });
+    });
     if (response.ok) {
       router.push("/admin/login");
     }
@@ -24,13 +25,16 @@ export default function AdminLayout({ children }) {
         <h1>admin</h1>
       </Link>
       {!isLoginPage && (
-        <>
-          <Link href="/admin/posts/create" style={{ marginRight: "10px" }}>
-            <button>N</button>
+        <div className="adminButtonContainer">
+          <Link href="/admin/posts/create">
+            <button className={"adminButton"}>New post</button>
           </Link>
-          <button onClick={handleLogout}>L</button>
-        </>
+          <button className={"adminButton"} onClick={handleLogout}>
+            Logout
+          </button>
+        </div>
       )}
+      <hr />
       <main>{children}</main>
     </>
   );

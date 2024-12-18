@@ -35,7 +35,7 @@ export default function Login() {
 
   if (typeof window !== "undefined" && window.location.hostname !== "localhost")
     return null;
-  
+
   return (
     <AdminLayout>
       <form onSubmit={handleSubmit}>
@@ -56,7 +56,9 @@ export default function Login() {
           />
         </p>
         <p>
-          <button type="submit">Login</button>
+          <button type="submit" className="adminButton">
+            Login
+          </button>
         </p>
       </form>
     </AdminLayout>

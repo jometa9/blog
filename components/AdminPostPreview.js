@@ -1,12 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-const titleStyle = {
-  whiteSpace: "nowrap",
-  overflow: "hidden",
-  textOverflow: "ellipsis",
-};
-
 export default function AdminPostPreview({
   post,
   onToggleVisibility,
@@ -19,7 +13,7 @@ export default function AdminPostPreview({
       const response = await fetch(`/api/posts/${post.slug}/toggleVisibility`, {
         method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
       });
       const data = await response.json();
@@ -37,7 +31,7 @@ export default function AdminPostPreview({
         const response = await fetch(`/api/posts/${post.slug}`, {
           method: "DELETE",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
         });
         const data = await response.json();
@@ -53,26 +47,18 @@ export default function AdminPostPreview({
   };
 
   return (
-    <div style={{ display: "flex", alignItems: "center" }}>
-      <p style={{ flex: 1, ...titleStyle }}>
+    <div>
+      <p>
         <Link href={`/blog/posts/${post.slug}`}>{post.title}</Link>
       </p>
-      <div style={{ marginLeft: "10px" }}>
-        <button onClick={handleVisibilityToggle} style={{ marginLeft: "10px" }}>
-          {post.visible ? "H" : "S"}
+      <div className="adminButtonContainer">
+        <button className="adminButton" onClick={handleVisibilityToggle}>
+          {post.visible ? "Hide" : "Show"}
         </button>
-        <Link
-          href={`/admin/posts/create?slug=${post.slug}`}
-          style={{ marginLeft: "10px" }}
-        >
-          <button>E</button>
+        <Link href={`/admin/posts/create?slug=${post.slug}`}>
+          <button className="adminButton">Edit</button>
         </Link>
-        <button
-          onClick={handleDelete}
-          style={{ marginLeft: "10px", color: "red" }}
-        >
-          D
-        </button>
+        <button className="adminButton" onClick={handleDelete}>Delete</button>
       </div>
     </div>
   );

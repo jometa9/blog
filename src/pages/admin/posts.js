@@ -53,7 +53,6 @@ export default function AdminPosts() {
           placeholder="Search posts..."
           value={searchTerm}
           onChange={handleSearchChange}
-          style={{ width: "100%" }}
         />
       </p>
       <hr />

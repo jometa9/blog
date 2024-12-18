@@ -27,13 +27,14 @@ iframe {
 input {
   border: none;
   width: 100%;
-  padding: 5px 0;
   outline: "none";
+  font-size: 16px;
 }
 input[type="text"]:focus,
 input[type="password"]:focus {
   outline: none;
   box-shadow: none;
+  font-size: 16px;
 }
 button {
   cursor: pointer;
@@ -42,6 +43,7 @@ select {
   border: none;
   margin: 0;
   padding: 0;
+  font-size: 16px;
 }
 
 textarea,
@@ -51,6 +53,7 @@ textarea:focus {
   box-shadow: none;
   border: none;
   resize: vertical;
+  font-size: 16px;
 }
 hr {
   border: solid 0.2px #00000050;
@@ -61,6 +64,13 @@ hr {
   align-items: center;
   gap: 10px;
 }
+.quoteView {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  color: #00000050;
+}
 .postPreviewTitle {
   white-space: nowrap;
   overflow: hidden;
@@ -68,7 +78,7 @@ hr {
   font-style: none;
   text-decoration: none;
 }
-.postPreview span {
+.postPreview span, .quoteView span {
   white-space: nowrap;
   flex-shrink: 0;
 }
@@ -77,17 +87,17 @@ hr {
   text-align: center;
   color: #00000050;
 }
-.homeLinksContainer{
+.homeLinksContainer {
   display: flex;
   flex-direction: column;
   height: 80vh;
   justify-content: center;
 }
-.homeLinksTitle{
-text-align: center;
-font-size: 50px;
+.homeLinksTitle {
+  text-align: center;
+  font-size: 50px;
 }
-.homeLinksLinkContainer{
+.homeLinksLinkContainer {
   display: flex;
   justify-content: space-around;
   padding: 30px;
@@ -95,7 +105,23 @@ font-size: 50px;
   gap: 20px;
   text-align: center;
 }
-.homeLinksLink{
+
+.homeLinksLink {
   text-decoration: none;
   color: #00000050;
+}
+
+.adminButton {
+  background-color: #00000010;
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 16px;
+}
+
+.adminButtonContainer {
+  display: flex;
+  gap: 10px;
+  padding-bottom: 15px;
 }

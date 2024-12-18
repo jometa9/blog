@@ -1,7 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import 'highlight.js/styles/github.css';
-import Home from "./page";
 
 export const metadata: Metadata = {
   title: "jometayer",

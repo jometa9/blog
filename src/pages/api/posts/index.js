@@ -24,7 +24,7 @@ export default async function handler(req, res) {
     const { posts, lastPostDate } = getPostMetadata();
     res.status(200).json({ posts, lastPostDate });
   } else if (req.method === "POST") {
-    const { title, visible, content } = req.body;
+    const { title, visible, quote, content } = req.body;
     const currentDate = new Date();
     const day = String(currentDate.getDate()).padStart(2, "0");
     const month = String(currentDate.getMonth() + 1).padStart(2, "0");
@@ -37,6 +37,7 @@ export default async function handler(req, res) {
       title,
       date: `${day}-${month}-${year}`,
       visible,
+      quote,
       slug: fileName.replace(".md", ""),
     };
     const matterData = matter.stringify(content, postData);
