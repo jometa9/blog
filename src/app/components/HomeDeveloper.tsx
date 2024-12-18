@@ -24,7 +24,7 @@ export default function HomeDeveloper() {
         </li>
         <li>
           <p>
-            <a href="https://www.instagram.com/jometayer" target="_blank">
+            <a href="https://www.instagram.com/jometa_" target="_blank">
               Instagram
             </a>
           </p>
