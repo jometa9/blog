@@ -2,15 +2,12 @@ import Link from "next/link";
 import { PostMetadata } from "./PostMetadata";
 
 const PostPreview = (props: PostMetadata) => {
-  const titleStyle = {
-    whiteSpace: "nowrap",
-    overflow: "hidden",
-    textOverflow: "ellipsis",
-  };
-
   return (
-    <p style={titleStyle}>
-      {props.date} <Link href={`/blog/posts/${props.slug}`}>{props.title}</Link>
+    <p className="postPreview">
+      <Link href={`/blog/posts/${props.slug}`} className="postPreviewTitle">
+        {props.title}
+      </Link>
+      <span>{props.date}</span>
     </p>
   );
 };

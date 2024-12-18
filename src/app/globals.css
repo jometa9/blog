@@ -1,11 +1,20 @@
+@font-face {
+  font-family: "Playfair";
+  src: url("../../public/fonts/PlayfairDisplay-VariableFont_wght.ttf")
+    format("truetype");
+  font-weight: normal; /* Puedes ajustar esto según el peso de la fuente */
+  font-style: normal; /* Cambia según el estilo de la fuente */
+}
+
 * {
-  font-family: monospace;
+  font-family: "Playfair";
   box-sizing: border-box;
   color: #000;
 }
 body {
   max-width: 700px;
-  padding: 0px 10px 10px 10px;
+  padding: 0px 30px 30px 30px;
+  margin: 0 auto;
 }
 img {
   width: 100%;
@@ -34,6 +43,7 @@ select {
   margin: 0;
   padding: 0;
 }
+
 textarea,
 textarea:focus {
   width: 100%;
@@ -41,4 +51,51 @@ textarea:focus {
   box-shadow: none;
   border: none;
   resize: vertical;
+}
+hr {
+  border: solid 0.2px #00000050;
+}
+.postPreview {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.postPreviewTitle {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-style: none;
+  text-decoration: none;
+}
+.postPreview span {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.footerDate {
+  padding: 20px 0 30px;
+  text-align: center;
+  color: #00000050;
+}
+.homeLinksContainer{
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+  justify-content: center;
+}
+.homeLinksTitle{
+text-align: center;
+font-size: 50px;
+}
+.homeLinksLinkContainer{
+  display: flex;
+  justify-content: space-around;
+  padding: 30px;
+  flex-wrap: wrap;
+  gap: 20px;
+  text-align: center;
+}
+.homeLinksLink{
+  text-decoration: none;
+  color: #00000050;
 }

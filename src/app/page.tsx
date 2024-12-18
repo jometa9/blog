@@ -1,5 +1,5 @@
-import HomeDeveloper from "./components/HomeDeveloper";
+import HomeLinks from "./components/HomeLinks";
 
 export default function Home() {
-  return <HomeDeveloper />;
+  return <HomeLinks />;
 }
