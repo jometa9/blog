@@ -6,6 +6,16 @@ import { useRouter } from "next/router";
 export default function AdminPosts() {
   const [posts, setPosts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const router = useRouter();
+
+  useEffect(() => {
+    if (
+      typeof window !== "undefined" &&
+      window.location.hostname !== "localhost"
+    ) {
+      router.push("/");
+    }
+  }, [router]);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -31,6 +41,9 @@ export default function AdminPosts() {
   const filteredPosts = posts.filter((post) =>
     post.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  if (typeof window !== "undefined" && window.location.hostname !== "localhost")
+    return null;
 
   return (
     <AdminLayout>
