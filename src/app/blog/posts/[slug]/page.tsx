@@ -33,12 +33,12 @@ const PostPage = (props: any) => {
 
   return (
     <div>
-      <h2>
+      <hr />
+      <h3>
         <b>
           {post.data.title}
         </b>
-      </h2>
-      <hr />
+      </h3>
       <article>
         <Markdown
           options={{
@@ -65,7 +65,6 @@ const PostPage = (props: any) => {
           {post.content}
         </Markdown>
       </article>
-      <hr />
       <p className="footerDate">
 
       {post.data.date} 

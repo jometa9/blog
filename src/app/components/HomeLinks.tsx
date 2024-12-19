@@ -28,7 +28,7 @@ export default function HomeLinks() {
         </a>
       </div>
       <div className="homeLinksLinkContainer">
-        <Link href="/blog" className="homeLinksLink" target="_blank">
+        <Link href="#blog" className="homeLinksLink">
           Blog
         </Link>
         <a
@@ -39,6 +39,7 @@ export default function HomeLinks() {
           Email
         </a>
       </div>
+      <div className="homeQuote">The journey uncolored.</div>
     </div>
   );
 }

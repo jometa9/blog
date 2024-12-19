@@ -10,6 +10,7 @@
   box-sizing: border-box;
   user-select: none;
   color: #000;
+  scroll-behavior: smooth;
 }
 body {
   max-width: 800px;
@@ -84,14 +85,14 @@ hr {
   flex-shrink: 0;
 }
 .footerDate {
-  padding: 20px 0 30px;
+  padding: 20px 0 20px;
   text-align: center;
   color: #00000050;
 }
 .homeLinksContainer {
   display: flex;
   flex-direction: column;
-  height: 80vh;
+  height: 60vh;
   justify-content: center;
 }
 .homeLinksTitle {
@@ -108,7 +109,7 @@ hr {
 }
 .homeLinksLink {
   text-decoration: none;
-  color: #00000050;
+  color: #00000080;
 }
 .adminButton {
   background-color: #00000010;
@@ -131,6 +132,14 @@ hr {
 }
 .hrAdminHero {
   margin-top: 20px;
+}
+.blogHeaderTitle {
+  text-decoration: none;
+}
+.homeQuote {
+  text-align: center;
+  color: #00000020;
+  padding: 30px;
 }
 @media (max-width: 500px) {
   .adminPostPreviewContainer {
