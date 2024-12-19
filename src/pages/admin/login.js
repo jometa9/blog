@@ -8,14 +8,14 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const router = useRouter();
 
-  useEffect(() => {
+  /* useEffect(() => {
     if (
       typeof window !== "undefined" &&
       window.location.hostname !== "localhost"
     ) {
       router.push("/");
     }
-  }, [router]);
+  }, [router]);*/
 
   const handleSubmit = async (e) => {
     e.preventDefault();
