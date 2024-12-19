@@ -47,7 +47,7 @@ export default function AdminPostPreview({
   };
 
   return (
-    <div>
+    <div className="adminPostPreviewContainer">
       <p>
         <Link href={`/blog/posts/${post.slug}`}>{post.title}</Link>
       </p>

@@ -22,7 +22,7 @@ export default function AdminLayout({ children }) {
   return (
     <>
       <Link href="/admin/posts">
-        <h1>admin</h1>
+        <h2>admin</h2>
       </Link>
       {!isLoginPage && (
         <div className="adminButtonContainer">
@@ -34,7 +34,7 @@ export default function AdminLayout({ children }) {
           </button>
         </div>
       )}
-      <hr />
+      <hr className="hrAdminHero"/>
       <main>{children}</main>
     </>
   );

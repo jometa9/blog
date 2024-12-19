@@ -2,17 +2,17 @@
   font-family: "Playfair";
   src: url("../../public/fonts/PlayfairDisplay-VariableFont_wght.ttf")
     format("truetype");
-  font-weight: normal; /* Puedes ajustar esto según el peso de la fuente */
-  font-style: normal; /* Cambia según el estilo de la fuente */
+  font-weight: normal;
+  font-style: normal;
 }
-
 * {
   font-family: "Playfair";
   box-sizing: border-box;
+  user-select: none;
   color: #000;
 }
 body {
-  max-width: 700px;
+  max-width: 800px;
   padding: 0px 30px 30px 30px;
   margin: 0 auto;
 }
@@ -78,7 +78,8 @@ hr {
   font-style: none;
   text-decoration: none;
 }
-.postPreview span, .quoteView span {
+.postPreview span,
+.quoteView span {
   white-space: nowrap;
   flex-shrink: 0;
 }
@@ -105,12 +106,10 @@ hr {
   gap: 20px;
   text-align: center;
 }
-
 .homeLinksLink {
   text-decoration: none;
   color: #00000050;
 }
-
 .adminButton {
   background-color: #00000010;
   color: #000;
@@ -119,9 +118,22 @@ hr {
   padding: 5px 10px;
   font-size: 16px;
 }
-
 .adminButtonContainer {
   display: flex;
   gap: 10px;
-  padding-bottom: 15px;
+  align-items: center;
+}
+.adminPostPreviewContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.hrAdminHero {
+  margin-top: 20px;
+}
+@media (max-width: 500px) {
+  .adminPostPreviewContainer {
+    display: block;
+  }
 }
