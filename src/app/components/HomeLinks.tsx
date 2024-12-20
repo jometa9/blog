@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function HomeLinks() {
   return (
     <div className="homeLinksContainer">
-      <h1 className="homeLinksTitle">jometayer</h1>
+      <h1 className="homeLinksTitle">jometa</h1>
       <div className="homeLinksLinkContainer">
         <a
           href="https://www.linkedin.com/in/joaquinmetayer"

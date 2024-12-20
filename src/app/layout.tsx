@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import 'highlight.js/styles/github.css';
 
 export const metadata: Metadata = {
-  title: "jometayer",
+  title: "jometa",
 };
 
 export default function RootLayout({
