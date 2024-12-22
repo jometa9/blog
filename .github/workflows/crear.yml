@@ -1,0 +1,85 @@
+name: Crear Post desde Issue Form
+
+on:
+  issues:
+    types: [opened, edited]
+
+jobs:
+  crear-post:
+    runs-on: ubuntu-latest
+    
+    if: contains(join(github.event.issue.labels.*.name, ','), 'new-post')
+
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v3
+
+      - name: Configurar Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Crear archivo a partir del Issue Form
+        run: |
+          # El cuerpo del issue viene en github.event.issue.body
+          BODY="${{ github.event.issue.body }}"
+
+          # Extraemos la info que el usuario llenó en el formulario.
+          # El BODY de Issue Forms viene con unos marcadores <details> en Markdown.
+          # Ejemplo (simplificado):
+          #
+          # <summary>post_title</summary>
+          # gggg
+          # <summary>post_date</summary>
+          # 22-12-2024
+          #
+          # Podemos parsear con sed, awk, etc., o con una pequeña lógica en bash
+          # para buscar "post_title", "post_date", etc.
+
+          # Función auxiliar para extraer el valor de un campo basado en su id.
+          # Busca la línea que dice <summary>post_title</summary>, y lee la siguiente línea.
+          function extract_field() {
+            local field_id="$1"
+            echo "$BODY" \
+              | awk "/<summary>$field_id<\\/summary>/{getline; print}" \
+              | sed 's/\r//g'  # Quita retorno de carro si existe
+          }
+
+          TITLE=$(extract_field "post_title")
+          DATE=$(extract_field "post_date")
+          VISIBLE=$(extract_field "post_visible")
+          QUOTE=$(extract_field "post_quote")
+          SLUG=$(extract_field "post_slug")
+          YOUTUBE=$(extract_field "youtube_id")
+
+          # Creamos un nombre de archivo (opcional, basado en slug y fecha)
+          DATESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
+          FILENAME="${DATESTAMP}-${SLUG}.md"
+
+          # Creamos la carpeta 'posts' si no existe
+          mkdir -p posts
+
+          # Generamos el contenido con frontmatter e iframe
+          # Ten en cuenta que si DATE, TITLE, etc. vienen con comillas, podría romper
+          # Por lo general, conviene limpiar o reemplazar comillas problemáticas.
+          cat <<EOF > "posts/$FILENAME"
+---
+title: $TITLE
+date: $DATE
+visible: $VISIBLE
+quote: $QUOTE
+slug: '$SLUG'
+---
+
+<iframe src="https://www.youtube.com/embed/$YOUTUBE" allowfullscreen></iframe>
+EOF
+
+          # Hacemos commit
+          git add "posts/$FILENAME"
+          git commit -m "Agregar post desde Issue: $TITLE"
+
+      - name: Push changes
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}

@@ -1,0 +1,62 @@
+name: "Nuevo Post (Formulario)"
+description: "Formulario para crear un nuevo post con frontmatter e iframe"
+title: "Crear un nuevo post"
+labels: ["new-post"]
+body:
+  - type: input
+    id: post_title
+    attributes:
+      label: "Título"
+      description: "Título del post"
+      placeholder: "Ej: gggg"
+    validations:
+      required: true
+
+  - type: input
+    id: post_date
+    attributes:
+      label: "Fecha"
+      description: "Fecha del post en formato DD-MM-YYYY"
+      placeholder: "22-12-2024"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: post_visible
+    attributes:
+      label: "Visible"
+      description: "¿El post es visible?"
+      options:
+        - "true"
+        - "false"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: post_quote
+    attributes:
+      label: "Quote"
+      description: "¿El post es una cita?"
+      options:
+        - "true"
+        - "false"
+    validations:
+      required: true
+
+  - type: input
+    id: post_slug
+    attributes:
+      label: "Slug"
+      description: "Slug único para el post"
+      placeholder: "22122024"
+    validations:
+      required: true
+
+  - type: input
+    id: youtube_id
+    attributes:
+      label: "ID de YouTube"
+      description: "La parte que va luego de /embed/, ej: iOAEEL5rX1s"
+      placeholder: "iOAEEL5rX1s"
+    validations:
+      required: false
