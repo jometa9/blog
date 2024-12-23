@@ -87,7 +87,7 @@ jobs:
           echo "=================="
           
           # Creamos el archivo con el frontmatter e iframe
-          cat <<'EOF' > "posts/${SLUG}.md"
+          cat <<EOF > "posts/${SLUG}.md"
           ---
           title: $TITLE
           date: $DATE
