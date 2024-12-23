@@ -27,16 +27,18 @@ jobs:
             | sed 's/[ \t]*$//g')
 
           echo "=== Body debug ==="
-          echo "$CLEAN_BODY"
+          echo "$CLEAN_BODY" | cat -A
           echo "=================="
 
           TITLE=$(
             echo "$CLEAN_BODY" \
-              | grep -A2 '^### Title[[:space:]]*$' \
-              | tail -n2 \
-              | grep -v '^### ' \
-              | head -n1
-          )          DATE=$(echo "$CLEAN_BODY"     | grep -A1 '^### Date'       | tail -n1)
+            | grep -A3 '^### Title' \
+            | tail -n3 \
+            | sed '/^### /d' \
+            | sed '/^[[:space:]]*$/d' \
+            | head -n1
+          )         
+          DATE=$(echo "$CLEAN_BODY"     | grep -A1 '^### Date'       | tail -n1)
           VISIBLE=$(echo "$CLEAN_BODY"  | grep -A1 '^### Visible'    | tail -n1)
           QUOTE=$(echo "$CLEAN_BODY"    | grep -A1 '^### Quote'      | tail -n1)
           SLUG=$(echo "$CLEAN_BODY"     | grep -A1 '^### Slug'       | tail -n1)
