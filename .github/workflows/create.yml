@@ -26,16 +26,18 @@ jobs:
 
           # Show the body with invisible characters for debug
           echo "=== Body debug with cat -A ==="
-          echo "$BODY" | cat -A
+          echo \"$BODY\" | cat -A
           echo "=============================="
 
           # Function: looks for the EXACT line "### <heading>", then prints the next line
           function get_value_after_heading() {
             local heading="^### $1$"
-            echo "$BODY" \
-              | sed 's/\r//g' \            # remove possible Windows \r
-              | sed 's/[ \t]*$//g' \       # remove trailing spaces/tabs
-              | awk -v heading="$heading" '
+
+            # Eliminar posibles \r de Windows y espacios en blanco al final
+            echo \"$BODY\" \
+              | sed 's/\r//g' \
+              | sed 's/[ \t]*$//g' \
+              | awk -v heading=\"$heading\" '
                   $0 ~ heading {
                     getline
                     gsub(/\r$/, "", $0)
@@ -45,7 +47,7 @@ jobs:
                 '
           }
 
-          # Extract each field by matching the lines in the Issue body
+          # Extraer cada campo
           TITLE=$(get_value_after_heading "Title")
           DATE=$(get_value_after_heading "Date")
           VISIBLE=$(get_value_after_heading "Visible")
@@ -60,29 +62,29 @@ jobs:
           echo "SLUG=$SLUG"
           echo "YOUTUBE=$YOUTUBE"
 
-          # Generate a filename for the new post
+          # Generar el nombre de archivo
           DATESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
-          FILENAME="${DATESTAMP}-${SLUG}.md"
+          FILENAME=\"${SLUG}.md\"
 
-          # Ensure the 'posts' folder exists
+          # Asegurarse de que la carpeta 'posts' exista
           mkdir -p posts
 
-          # Create the Markdown file with frontmatter and iframe
+          # Crear el archivo Markdown con el frontmatter + iframe
           {
-            echo "---"
-            echo "title: $TITLE"
-            echo "date: $DATE"
-            echo "visible: $VISIBLE"
-            echo "quote: $QUOTE"
-            echo "slug: '$SLUG'"
-            echo "---"
+            echo \"---\"
+            echo \"title: $TITLE\"
+            echo \"date: $DATE\"
+            echo \"visible: $VISIBLE\"
+            echo \"quote: $QUOTE\"
+            echo \"slug: '$SLUG'\"
+            echo \"---\"
             echo
-            echo "<iframe src=\"https://www.youtube.com/embed/$YOUTUBE\" allowfullscreen></iframe>"
-          } > "posts/$FILENAME"
+            echo \"<iframe src=\\\"https://www.youtube.com/embed/$YOUTUBE\\\" allowfullscreen></iframe>\"
+          } > \"posts/$FILENAME\"
 
-          # Commit and push
-          git add "posts/$FILENAME"
-          git commit -m "Add post from Issue: $TITLE"
+          # Hacer commit y push
+          git add \"posts/$FILENAME\"
+          git commit -m \"Add post from Issue: $TITLE\"
 
       - name: Push changes
         uses: ad-m/github-push-action@v0.6.0
