@@ -1,4 +1,4 @@
-name: Create Post from Issue Form
+name: "Create Post from Issue Form"
 
 on:
   issues:
@@ -7,9 +7,7 @@ on:
 jobs:
   create-post:
     runs-on: ubuntu-latest
-
     if: contains(join(github.event.issue.labels.*.name, ','), 'new-post')
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
