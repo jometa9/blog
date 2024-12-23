@@ -18,78 +18,48 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          
+
       - name: Create post file from Issue Form
         run: |
-          # Capturamos el Issue body como siempre
+          # Capturamos el Issue body
           BODY="${{ github.event.issue.body }}"
-      
-          # 1) Elimina comillas inicial y final, si existieran
-          CLEAN_BODY=$(echo "$BODY" | sed 's/^"//; s/"$//')
-      
-            # 2) Convierte "\n" literales en saltos de línea reales
-          #    (solo si ves que tu body incluye esos caracteres en lugar de saltos reales).
-          CLEAN_BODY=$(echo "$CLEAN_BODY" | sed 's/\\n/\n/g')
-      
-          echo "=== Body debug AFTER cleaning ==="
-          echo "$CLEAN_BODY" | cat -A
-          echo "================================="
-        
-          # Function: looks for the EXACT line "### <heading>", then prints the next line
-          function get_value_after_heading() {
-            local heading="^### $1$"
-            echo "$CLEAN_BODY" \
-              | sed 's/\r//g' \
-              | sed 's/[ \t]*$//g' \
-              | awk -v heading="$heading" '
-                  $0 ~ heading {
-                    getline
-                    gsub(/\r$/, "", $0)
-                    print $0
-                    exit
-                  }
-                '
-          }
-      
-          # Extraer cada campo
-          TITLE=$(get_value_after_heading "Title")
-          DATE=$(get_value_after_heading "Date")
-          VISIBLE=$(get_value_after_heading "Visible")
-          QUOTE=$(get_value_after_heading "Quote")
-          SLUG=$(get_value_after_heading "Slug")
-          YOUTUBE=$(get_value_after_heading "YouTube ID")
-      
-          echo "TITLE=$TITLE"
-          echo "DATE=$DATE"
-          echo "VISIBLE=$VISIBLE"
-          echo "QUOTE=$QUOTE"
-          echo "SLUG=$SLUG"
-          echo "YOUTUBE=$YOUTUBE"
-        
-          # Generar el nombre de archivo
-          DATESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
-          FILENAME="${SLUG}.md"
-      
-          # Asegurarse de que la carpeta 'posts' exista
+          
+          echo "=== Body debug ==="
+          echo "$BODY"
+          echo "=================="
+
+          # Parseamos cada campo buscando la línea '### <Heading>' y leyendo la siguiente
+          TITLE=$(echo "$BODY"    | grep -A1 '^### Title'      | tail -n1)
+          DATE=$(echo "$BODY"     | grep -A1 '^### Date'       | tail -n1)
+          VISIBLE=$(echo "$BODY"  | grep -A1 '^### Visible'    | tail -n1)
+          QUOTE=$(echo "$BODY"    | grep -A1 '^### Quote'      | tail -n1)
+          SLUG=$(echo "$BODY"     | grep -A1 '^### Slug'       | tail -n1)
+          YOUTUBE=$(echo "$BODY"  | grep -A1 '^### YouTube ID' | tail -n1)
+
+          echo "title:   $TITLE"
+          echo "date:    $DATE"
+          echo "visible: $VISIBLE"
+          echo "quote:   $QUOTE"
+          echo "slug:    $SLUG"
+          echo "youtube: $YOUTUBE"
+
+          # Creamos la carpeta si no existe
           mkdir -p posts
-        
-          # Crear el archivo Markdown con el frontmatter + iframe
-          {
-            echo "---"
-            echo "title: $TITLE"
-            echo "date: $DATE"
-            echo "visible: $VISIBLE"
-            echo "quote: $QUOTE"
-            echo "slug: '$SLUG'"
-            echo "---"
-            echo
-            echo "<iframe src=\"https://www.youtube.com/embed/$YOUTUBE\" allowfullscreen></iframe>"
-          } > "posts/$FILENAME"
-      
-          # Hacer commit y push
-          git add "posts/$FILENAME"
+          
+          # Creamos el archivo con el frontmatter e iframe
+          cat <<EOF > "posts/${SLUG}.md"
+---
+title: $TITLE
+date: $DATE
+visible: $VISIBLE
+quote: $QUOTE
+slug: '$SLUG'
+---
+<iframe src="https://www.youtube.com/embed/$YOUTUBE" allowfullscreen></iframe>
+EOF
+
+          git add "posts/${SLUG}.md"
           git commit -m "Add post from Issue: $TITLE"
-        
 
       - name: Push changes
         uses: ad-m/github-push-action@v0.6.0
