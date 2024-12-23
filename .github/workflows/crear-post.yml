@@ -22,16 +22,33 @@ jobs:
 
       - name: Crear archivo a partir del Issue Form
         run: |
+          # Capturamos el body del issue
           BODY="${{ github.event.issue.body }}"
 
+          # Mostramos el body con caracteres invisibles, para depurar:
+          echo "=== Body con cat -A (debug) ==="
+          echo "$BODY" | cat -A
+          echo "================================"
+
           # Función: busca la línea EXACTA "### <campo>" y lee la siguiente
+          # Usamos sed para eliminar \r y espacios al final.
           function get_value_after_heading() {
-            local heading="### $1"
-            echo "$BODY" | awk -v heading="$heading" '
-              $0 == heading { getline; print $0; exit }
-            '
+            local heading="^### $1$"  # Por ejemplo, ^### Título$
+            echo "$BODY" \
+              | sed 's/\r//g' \           # quita posibles \r de Windows
+              | sed 's/[ \t]*$//g' \      # quita espacios/tabs al final de cada línea
+              | awk -v heading="$heading" '
+                  $0 ~ heading {
+                    getline
+                    # eliminamos \r (por si quedara alguno)
+                    gsub(/\r$/, "", $0)
+                    print $0
+                    exit
+                  }
+                '
           }
 
+          # Extraemos los campos tal como aparecen en el body
           TITLE=$(get_value_after_heading "Título")
           DATE=$(get_value_after_heading "Fecha")
           VISIBLE=$(get_value_after_heading "Visible")
@@ -46,31 +63,22 @@ jobs:
           echo "SLUG=$SLUG"
           echo "YOUTUBE=$YOUTUBE"
 
-
-          # (Opcional) Muestra en logs para depurar
-          echo "TITLE=$TITLE"
-          echo "DATE=$DATE"
-          echo "VISIBLE=$VISIBLE"
-          echo "QUOTE=$QUOTE"
-          echo "SLUG=$SLUG"
-          echo "YOUTUBE=$YOUTUBE"
-
-          # Creamos un filename, con fecha-hora y el slug
+          # Creamos un nombre de archivo (opcional)
           DATESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
-          FILENAME="${SLUG}.md"
+          FILENAME="${DATESTAMP}-${SLUG}.md"
 
           # Creamos la carpeta 'posts' si no existe
           mkdir -p posts
 
-          # Generamos el contenido en el .md
-          echo "---" > "posts/$FILENAME"
-          echo "title: $TITLE" >> "posts/$FILENAME"
-          echo "date: $DATE" >> "posts/$FILENAME"
-          echo "visible: $VISIBLE" >> "posts/$FILENAME"
-          echo "quote: $QUOTE" >> "posts/$FILENAME"
-          echo "slug: '$SLUG'" >> "posts/$FILENAME"
-          echo "---" >> "posts/$FILENAME"
-          echo "" >> "posts/$FILENAME"
+          # Generamos el contenido en el archivo .md
+          echo "---"                  >  "posts/$FILENAME"
+          echo "title: $TITLE"       >> "posts/$FILENAME"
+          echo "date: $DATE"         >> "posts/$FILENAME"
+          echo "visible: $VISIBLE"   >> "posts/$FILENAME"
+          echo "quote: $QUOTE"       >> "posts/$FILENAME"
+          echo "slug: '$SLUG'"       >> "posts/$FILENAME"
+          echo "---"                 >> "posts/$FILENAME"
+          echo ""                    >> "posts/$FILENAME"
           echo "<iframe src=\"https://www.youtube.com/embed/$YOUTUBE\" allowfullscreen></iframe>" >> "posts/$FILENAME"
 
           # Hacemos commit y push
