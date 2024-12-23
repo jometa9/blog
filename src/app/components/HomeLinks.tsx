@@ -39,7 +39,7 @@ export default function HomeLinks() {
           Email
         </a>
       </div>
-      <div className="homeQuote">The journey uncolored.</div>
+      <div className="homeQuote">Living he journey.</div>
     </div>
   );
 }
