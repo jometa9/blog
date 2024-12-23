@@ -22,27 +22,30 @@ jobs:
 
       - name: Crear archivo a partir del Issue Form
         run: |
-          echo "=== DEBUG BODY ==="
-          echo "${{ github.event.issue.body }}"
-          echo "=================="
-          # Capturamos el cuerpo del Issue
           BODY="${{ github.event.issue.body }}"
 
-          # Función que busca la línea que coincide con "## <Heading>" y lee la siguiente línea
+          # Función: busca la línea EXACTA "### <campo>" y lee la siguiente
           function get_value_after_heading() {
-            local heading="## $1"
+            local heading="### $1"
             echo "$BODY" | awk -v heading="$heading" '
-              $0 == heading {getline; print $0; exit}
+              $0 == heading { getline; print $0; exit }
             '
           }
 
-          # Usando la misma nomenclatura que pusiste en tu form
           TITLE=$(get_value_after_heading "Título")
           DATE=$(get_value_after_heading "Fecha")
           VISIBLE=$(get_value_after_heading "Visible")
           QUOTE=$(get_value_after_heading "Quote")
           SLUG=$(get_value_after_heading "Slug")
           YOUTUBE=$(get_value_after_heading "ID de YouTube")
+
+          echo "TITLE=$TITLE"
+          echo "DATE=$DATE"
+          echo "VISIBLE=$VISIBLE"
+          echo "QUOTE=$QUOTE"
+          echo "SLUG=$SLUG"
+          echo "YOUTUBE=$YOUTUBE"
+
 
           # (Opcional) Muestra en logs para depurar
           echo "TITLE=$TITLE"
