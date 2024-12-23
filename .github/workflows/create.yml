@@ -93,7 +93,7 @@ jobs:
           date: $DATE
           visible: $VISIBLE
           quote: $QUOTE
-          slug: '$SLUG'
+          slug: $SLUG
           ---
           <iframe src="https://www.youtube.com/embed/$YOUTUBE" allowfullscreen></iframe>
           EOF
