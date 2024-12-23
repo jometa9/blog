@@ -21,25 +21,21 @@ jobs:
         run: |
           # Capturamos el Issue body
           BODY="${{ github.event.issue.body }}"
-          
+
+          CLEAN_BODY=$(echo "$BODY" \
+            | sed 's/\r//g'           \
+            | sed 's/[ \t]*$//g')
+
           echo "=== Body debug ==="
-          echo "$BODY"
+          echo "$CLEAN_BODY"
           echo "=================="
 
-          # Parseamos cada campo buscando la línea '### <Heading>' y leyendo la siguiente
-          TITLE=$(echo "$BODY"    | grep -A1 '^### Title'      | tail -n1)
-          DATE=$(echo "$BODY"     | grep -A1 '^### Date'       | tail -n1)
-          VISIBLE=$(echo "$BODY"  | grep -A1 '^### Visible'    | tail -n1)
-          QUOTE=$(echo "$BODY"    | grep -A1 '^### Quote'      | tail -n1)
-          SLUG=$(echo "$BODY"     | grep -A1 '^### Slug'       | tail -n1)
-          YOUTUBE=$(echo "$BODY"  | grep -A1 '^### YouTube ID' | tail -n1)
-
-          echo "title:   $TITLE"
-          echo "date:    $DATE"
-          echo "visible: $VISIBLE"
-          echo "quote:   $QUOTE"
-          echo "slug:    $SLUG"
-          echo "youtube: $YOUTUBE"
+          TITLE=$(echo "$CLEAN_BODY"    | grep -A1 '^### Title'      | tail -n1)
+          DATE=$(echo "$CLEAN_BODY"     | grep -A1 '^### Date'       | tail -n1)
+          VISIBLE=$(echo "$CLEAN_BODY"  | grep -A1 '^### Visible'    | tail -n1)
+          QUOTE=$(echo "$CLEAN_BODY"    | grep -A1 '^### Quote'      | tail -n1)
+          SLUG=$(echo "$CLEAN_BODY"     | grep -A1 '^### Slug'       | tail -n1)
+          YOUTUBE=$(echo "$CLEAN_BODY"  | grep -A1 '^### YouTube ID' | tail -n1)
 
           # Creamos la carpeta si no existe
           mkdir -p posts
