@@ -30,8 +30,13 @@ jobs:
           echo "$CLEAN_BODY"
           echo "=================="
 
-          TITLE=$(echo "$CLEAN_BODY"    | grep -A1 '^### Title'      | tail -n1)
-          DATE=$(echo "$CLEAN_BODY"     | grep -A1 '^### Date'       | tail -n1)
+          TITLE=$(
+            echo "$CLEAN_BODY" \
+              | grep -A2 '^### Title[[:space:]]*$' \
+              | tail -n2 \
+              | grep -v '^### ' \
+              | head -n1
+          )          DATE=$(echo "$CLEAN_BODY"     | grep -A1 '^### Date'       | tail -n1)
           VISIBLE=$(echo "$CLEAN_BODY"  | grep -A1 '^### Visible'    | tail -n1)
           QUOTE=$(echo "$CLEAN_BODY"    | grep -A1 '^### Quote'      | tail -n1)
           SLUG=$(echo "$CLEAN_BODY"     | grep -A1 '^### Slug'       | tail -n1)
