@@ -45,16 +45,16 @@ jobs:
           mkdir -p posts
           
           # Creamos el archivo con el frontmatter e iframe
-          cat <<EOF > "posts/${SLUG}.md"
----
-title: $TITLE
-date: $DATE
-visible: $VISIBLE
-quote: $QUOTE
-slug: '$SLUG'
----
-<iframe src="https://www.youtube.com/embed/$YOUTUBE" allowfullscreen></iframe>
-EOF
+          cat <<'EOF' > "posts/${SLUG}.md"
+          ---
+          title: $TITLE
+          date: $DATE
+          visible: $VISIBLE
+          quote: $QUOTE
+          slug: '$SLUG'
+          ---
+          <iframe src="https://www.youtube.com/embed/$YOUTUBE" allowfullscreen></iframe>
+          EOF
 
           git add "posts/${SLUG}.md"
           git commit -m "Add post from Issue: $TITLE"
