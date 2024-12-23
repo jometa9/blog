@@ -39,6 +39,10 @@ jobs:
 
           # Creamos la carpeta si no existe
           mkdir -p posts
+
+          echo "=== titleeeeeeeee debug ==="
+          echo "$TITLE"
+          echo "=================="
           
           # Creamos el archivo con el frontmatter e iframe
           cat <<'EOF' > "posts/${SLUG}.md"
