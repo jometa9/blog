@@ -7,7 +7,10 @@ on:
 jobs:
   crear-post:
     runs-on: ubuntu-latest
+
+    # Solo se ejecuta si el issue tiene la etiqueta 'new-post'
     if: contains(join(github.event.issue.labels.*.name, ','), 'new-post')
+
     steps:
       - name: Check out the repo
         uses: actions/checkout@v3
@@ -19,37 +22,52 @@ jobs:
 
       - name: Crear archivo a partir del Issue Form
         run: |
+          # Capturamos el cuerpo del Issue
           BODY="${{ github.event.issue.body }}"
 
-          function extract_field() {
-            local field_id="$1"
-            echo "$BODY" | awk "/<summary>$field_id<\\/summary>/{getline; print}" | sed 's/\r//g'
+          # Función que busca la línea que coincide con "## <Heading>" y lee la siguiente línea
+          function get_value_after_heading() {
+            local heading="## $1"
+            echo "$BODY" | awk -v heading="$heading" '
+              $0 == heading {getline; print $0; exit}
+            '
           }
 
-          TITLE=$(extract_field "post_title")
-          DATE=$(extract_field "post_date")
-          VISIBLE=$(extract_field "post_visible")
-          QUOTE=$(extract_field "post_quote")
-          SLUG=$(extract_field "post_slug")
-          YOUTUBE=$(extract_field "youtube_id")
+          # Usando la misma nomenclatura que pusiste en tu form
+          TITLE=$(get_value_after_heading "Título")
+          DATE=$(get_value_after_heading "Fecha")
+          VISIBLE=$(get_value_after_heading "Visible")
+          QUOTE=$(get_value_after_heading "Quote")
+          SLUG=$(get_value_after_heading "Slug")
+          YOUTUBE=$(get_value_after_heading "ID de YouTube")
 
+          # (Opcional) Muestra en logs para depurar
+          echo "TITLE=$TITLE"
+          echo "DATE=$DATE"
+          echo "VISIBLE=$VISIBLE"
+          echo "QUOTE=$QUOTE"
+          echo "SLUG=$SLUG"
+          echo "YOUTUBE=$YOUTUBE"
+
+          # Creamos un filename, con fecha-hora y el slug
           DATESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
-          FILENAME="${DATESTAMP}-${SLUG}.md"
+          FILENAME="${SLUG}.md"
 
+          # Creamos la carpeta 'posts' si no existe
           mkdir -p posts
 
-          echo "\---" > "posts/$FILENAME"
+          # Generamos el contenido en el .md
+          echo "---" > "posts/$FILENAME"
           echo "title: $TITLE" >> "posts/$FILENAME"
           echo "date: $DATE" >> "posts/$FILENAME"
           echo "visible: $VISIBLE" >> "posts/$FILENAME"
           echo "quote: $QUOTE" >> "posts/$FILENAME"
           echo "slug: '$SLUG'" >> "posts/$FILENAME"
-          echo "\---" >> "posts/$FILENAME"
+          echo "---" >> "posts/$FILENAME"
           echo "" >> "posts/$FILENAME"
           echo "<iframe src=\"https://www.youtube.com/embed/$YOUTUBE\" allowfullscreen></iframe>" >> "posts/$FILENAME"
 
-          sed -i 's/\\---/---/g' "posts/$FILENAME"
-
+          # Hacemos commit y push
           git add "posts/$FILENAME"
           git commit -m "Agregar post desde Issue: $TITLE"
 
