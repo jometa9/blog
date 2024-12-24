@@ -139,7 +139,7 @@ hr {
 .homeQuote {
   text-align: center;
   color: #00000020;
-  padding: 30px;
+  padding-top: 40px;
 }
 @media (max-width: 500px) {
   .adminPostPreviewContainer {

@@ -27,18 +27,6 @@ export default function HomeLinks() {
           Instagram
         </a>
       </div>
-      <div className="homeLinksLinkContainer">
-        <Link href="#blog" className="homeLinksLink">
-          Blog
-        </Link>
-        <a
-          href="mailto:joaquinmetayer@gmail.com"
-          target="_blank"
-          className="homeLinksLink"
-        >
-          Email
-        </a>
-      </div>
       <div className="homeQuote">Living the journey.</div>
     </div>
   );
