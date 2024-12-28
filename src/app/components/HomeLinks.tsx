@@ -13,6 +13,13 @@ export default function HomeLinks() {
           LinkedIn
         </a>
         <a
+          href="https://github.com/jometa9"
+          target="_blank"
+          className="homeLinksLink"
+        >
+          GitHub
+        </a>
+        <a
           href="https://www.youtube.com/@jometayer"
           target="_blank"
           className="homeLinksLink"
