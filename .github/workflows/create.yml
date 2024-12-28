@@ -99,7 +99,7 @@ jobs:
           EOF
 
           git add "posts/${SLUG}.md"
-          git commit -m "Add post from Issue: $TITLE"
+          git commit -m "$TITLE"
 
       - name: Push changes
         uses: ad-m/github-push-action@v0.6.0
