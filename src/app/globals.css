@@ -6,7 +6,7 @@
   font-style: normal;
 }
 * {
-  font-family: "Playfair";
+  font-family: monospace;
   box-sizing: border-box;
   user-select: none;
   color: #000;
@@ -151,4 +151,13 @@ hr {
   .adminPostPreviewContainer {
     display: block;
   }
+}
+.CF3{
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  padding-top: 40px;
+  font-size: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  color: purple;
 }
