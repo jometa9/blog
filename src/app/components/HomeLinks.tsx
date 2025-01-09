@@ -26,6 +26,13 @@ export default function HomeLinks() {
         >
           Instagram
         </a>
+        <a
+          href="https://x.com/_jometa"
+          target="_blank"
+          className="homeLinksLink"
+        >
+          Twitter
+        </a>
       </div>
     </div>
   );
