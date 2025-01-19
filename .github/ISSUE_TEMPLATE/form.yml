@@ -21,6 +21,15 @@ body:
     validations:
       required: true
 
+  - type: input
+      id: post_slug
+      attributes:
+        label: "Slug"
+        description: "Unique slug for the post"
+        placeholder: "e.g.: 22122024"
+      validations:
+        required: true
+
   - type: dropdown
     id: post_visible
     attributes:
@@ -29,6 +38,7 @@ body:
       options:
         - "true"
         - "false"
+      default: "true"
     validations:
       required: true
 
@@ -40,15 +50,7 @@ body:
       options:
         - "true"
         - "false"
-    validations:
-      required: true
-
-  - type: input
-    id: post_slug
-    attributes:
-      label: "Slug"
-      description: "Unique slug for the post"
-      placeholder: "e.g.: 22122024"
+      default: "false"
     validations:
       required: true
 

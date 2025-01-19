@@ -88,15 +88,15 @@ jobs:
             | head -n1
           )
 
-          # Creamos la carpeta si no existe
           mkdir -p posts
 
           echo "=== title debug ==="
           echo "$TITLE"
           echo "=================="
 
-          # Creamos el archivo con el frontmatter, iframe y contenido en markdown
-          cat <<EOF > "posts/${SLUG}.md"
+          POST_FILE="posts/${SLUG}.md"
+
+          cat <<EOF > "$POST_FILE"
           ---
           title: $TITLE
           date: $DATE
@@ -104,12 +104,22 @@ jobs:
           quote: $QUOTE
           slug: $SLUG
           ---
-          <iframe src="https://www.youtube.com/embed/$YOUTUBE" allowfullscreen></iframe>
-
-          $CONTENT
           EOF
 
-          git add "posts/${SLUG}.md"
+          if [ -n "$YOUTUBE" ]; then
+            echo "<iframe src=\"https://www.youtube.com/embed/$YOUTUBE\" allowfullscreen></iframe>" >> "$POST_FILE"
+          fi
+
+          if [ -n "$CONTENT" ]; then
+            echo "" >> "$POST_FILE"
+            echo "$CONTENT" >> "$POST_FILE"
+          fi
+
+          echo "=== Final post content ==="
+          cat "$POST_FILE"
+          echo "=========================="
+
+          git add "$POST_FILE"
           git commit -m "$TITLE"
 
       - name: Push changes
