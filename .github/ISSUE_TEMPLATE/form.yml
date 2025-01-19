@@ -1,5 +1,5 @@
 name: "New Post (Form)"
-description: "Form to create a new post with frontmatter and an iframe"
+description: "Form to create a new post with frontmatter, iframe, and markdown content"
 title: "Create a new post"
 labels: ["new-post"]
 body:
@@ -58,5 +58,14 @@ body:
       label: "YouTube ID"
       description: "The part after /embed/, e.g.: iOAEEL5rX1s"
       placeholder: "iOAEEL5rX1s"
+    validations:
+      required: false
+
+  - type: textarea
+    id: post_content
+    attributes:
+      label: "Content"
+      description: "Markdown content to be added below the iframe"
+      placeholder: "Write your content here..."
     validations:
       required: false

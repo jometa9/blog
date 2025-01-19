@@ -30,6 +30,7 @@ jobs:
           echo "$CLEAN_BODY" | cat -A
           echo "=================="
 
+          # Extraemos los valores de los campos
           TITLE=$(
             echo "$CLEAN_BODY" \
             | grep -A3 '^### Title' \
@@ -77,16 +78,24 @@ jobs:
             | sed '/^### /d' \
             | sed '/^[[:space:]]*$/d' \
             | head -n1
-          ) 
+          )
+          CONTENT=$(
+            echo "$CLEAN_BODY" \
+            | grep -A3 '^### Content' \
+            | tail -n3 \
+            | sed '/^### /d' \
+            | sed '/^[[:space:]]*$/d' \
+            | head -n1
+          )
 
           # Creamos la carpeta si no existe
           mkdir -p posts
 
-          echo "=== titleeeeeeeee debug ==="
+          echo "=== title debug ==="
           echo "$TITLE"
           echo "=================="
-          
-          # Creamos el archivo con el frontmatter e iframe
+
+          # Creamos el archivo con el frontmatter, iframe y contenido en markdown
           cat <<EOF > "posts/${SLUG}.md"
           ---
           title: $TITLE
@@ -96,6 +105,8 @@ jobs:
           slug: $SLUG
           ---
           <iframe src="https://www.youtube.com/embed/$YOUTUBE" allowfullscreen></iframe>
+
+          $CONTENT
           EOF
 
           git add "posts/${SLUG}.md"
