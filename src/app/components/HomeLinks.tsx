@@ -13,11 +13,11 @@ export default function HomeLinks() {
           LinkedIn
         </a>
         <a
-          href="https://www.youtube.com/@jometayer"
+          href="https://www.cf3funded.com"
           target="_blank"
           className="homeLinksLink"
         >
-          YouTube
+          CF3
         </a>
         <a
           href="https://www.instagram.com/jometa_"

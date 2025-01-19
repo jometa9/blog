@@ -106,6 +106,7 @@ hr {
   flex-wrap: wrap;
   gap: 20px;
   text-align: center;
+  align-items: center;
 }
 .homeLinksLink {
   text-decoration: none;
@@ -141,7 +142,7 @@ hr {
   color: #00000020;
   padding-top: 40px;
 }
-.centerLoading{
+.centerLoading {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -152,7 +153,7 @@ hr {
     display: block;
   }
 }
-.CF3{
+.CF3 {
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
   padding-top: 40px;
