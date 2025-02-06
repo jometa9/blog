@@ -5,7 +5,6 @@ export default function HomeLinks() {
     <div className="homeLinksContainer">
       <h1 className="homeLinksTitle">jometa</h1>
       <div className="homeLinksLinkContainer">
-        {/*
         <a
           href="https://www.cf3funded.com"
           target="_blank"
@@ -41,7 +40,6 @@ export default function HomeLinks() {
         >
           LinkedIn
         </a>
-        */}
       </div>
     </div>
   );
