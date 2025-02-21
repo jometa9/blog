@@ -26,7 +26,6 @@ export default function HomeLinks() {
         </a>
       </div>
       <p className="homeQuote">building on the internet</p>
-
     </div>
   );
 }
