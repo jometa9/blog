@@ -153,12 +153,25 @@ hr {
     display: block;
   }
 }
-.CF3 {
-  font-family: Arial, Helvetica, sans-serif;
-  text-align: center;
-  padding-top: 40px;
-  font-size: 25px;
-  text-decoration: none;
-  font-weight: bold;
-  color: purple;
+.dotHeroImg{
+  padding-top: 100px;
+  width: 30px;
+}
+.dotAgencyText1{
+  width: 100%;
+  padding-top: 10px;
+}
+.noSeEntiende{
+  font-size: 30px;
+  color:#00000090
+}
+.noSeEntiende2{
+  font-size: 30px;
+  text-align: right;
+  color:#00000090
+}
+.hablemos{
+  font-size: 60px;
+  padding-bottom: 200px;
+
 }
