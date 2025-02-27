@@ -18,10 +18,10 @@ window.onload = function () {
     "Hola 👋",
     "Somos dotAgency",
     "Automatizamos todos tus<br>procesos y operaciones",
-    "Te lo cuenta mejor nuestro<br>agente IA <a target=\"_blank\" href=\"https://www.wa.me/54935168726\">@Dotty</a>",
-    "Hace clic <a target=\"_blank\" href=\"https://www.wa.me/54935168726\">acá</a> y chatea!",
-    "¿Dudas? ¡<a target=\"_blank\" href=\"https://www.wa.me/54935168726\">Dotty</a> lo soluciona! ;)",
-    getCurrentTime()
+    'Te lo cuenta mejor nuestro<br>agente IA <a target="_blank" href="https://www.wa.me/54935168726">@Dotty</a>',
+    'Hace clic <a target="_blank" href="https://www.wa.me/54935168726">acá</a> y chatea!',
+    '¿Dudas? ¡<a target="_blank" href="https://www.wa.me/54935168726">Dotty</a> lo soluciona! ;)',
+    getCurrentTime(),
   ];
 
   var getFontSize = function () {
