@@ -1,0 +1,155 @@
+@font-face {
+  font-family: "Playfair";
+  src: url("../../public/fonts/PlayfairDisplay-VariableFont_wght.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+  font-family: monospace;
+  box-sizing: border-box;
+  user-select: none;
+  color: #000;
+  scroll-behavior: smooth;
+}
+body {
+  max-width: 800px;
+  padding: 0px 30px 30px 30px;
+  margin: 0 auto;
+}
+img {
+  width: 100%;
+}
+iframe {
+  aspect-ratio: 16 / 9;
+  border: none;
+  width: 100%;
+}
+input {
+  border: none;
+  width: 100%;
+  outline: "none";
+  font-size: 16px;
+}
+input[type="text"]:focus,
+input[type="password"]:focus {
+  outline: none;
+  box-shadow: none;
+  font-size: 16px;
+}
+button {
+  cursor: pointer;
+}
+select {
+  border: none;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+}
+
+textarea,
+textarea:focus {
+  width: 100%;
+  outline: none;
+  box-shadow: none;
+  border: none;
+  resize: vertical;
+  font-size: 16px;
+}
+hr {
+  border: solid 0.01px #00000010;
+}
+.postPreview {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.quoteView {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  color: #00000050;
+}
+.postPreviewTitle {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-style: none;
+  text-decoration: none;
+}
+.postPreview span,
+.quoteView span {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.footerDate {
+  padding: 20px 0 20px;
+  text-align: center;
+  color: #00000050;
+}
+.homeLinksContainer {
+  display: flex;
+  flex-direction: column;
+  height: 60vh;
+  justify-content: center;
+}
+.homeLinksTitle {
+  text-align: center;
+  font-size: 50px;
+}
+.homeLinksLinkContainer {
+  display: flex;
+  justify-content: space-around;
+  padding: 30px;
+  flex-wrap: wrap;
+  gap: 20px;
+  text-align: center;
+  align-items: center;
+}
+.homeLinksLink {
+  text-decoration: none;
+  color: #00000080;
+}
+.adminButton {
+  background-color: #00000010;
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 12.5px;
+}
+.adminButtonContainer {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.adminPostPreviewContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.hrAdminHero {
+  margin-top: 20px;
+}
+.blogHeaderTitle {
+  text-decoration: none;
+}
+.homeQuote {
+  text-align: center;
+  color: #00000020;
+  padding-top: 20px;
+}
+.centerLoading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+@media (max-width: 500px) {
+  .adminPostPreviewContainer {
+    display: block;
+  }
+}

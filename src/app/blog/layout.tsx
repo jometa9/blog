@@ -1,4 +1,5 @@
 import Hero from "../components/Hero";
+import '../jometa.css'
 
 export default function BlogLayout({
   children,
