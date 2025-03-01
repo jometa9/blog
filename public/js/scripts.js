@@ -15,7 +15,7 @@ window.onload = function () {
   };
 
   var messages = [
-    "Hola 👋",
+    "Hola humano!",
     "Somos dotAgency",
     "Automatizamos todos tus<br>procesos y operaciones",
     'Te lo cuenta mejor nuestro<br>agente IA <a target="_blank" href="https://www.wa.me/54935168726">@Dotty</a>',
