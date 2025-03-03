@@ -6,7 +6,7 @@
   font-style: normal;
 }
 * {
-  font-family: monospace;
+  font-family: Arial, Helvetica, sans-serif;
   box-sizing: border-box;
   user-select: none;
   color: #000;
@@ -16,6 +16,9 @@ body {
   max-width: 800px;
   padding: 0px 30px 30px 30px;
   margin: 0 auto;
+}
+p, a, span, h3{
+  font-size: 16px;
 }
 img {
   width: 100%;
@@ -110,7 +113,7 @@ hr {
 }
 .homeLinksLink {
   text-decoration: none;
-  color: #00000080;
+  color: #000000;
 }
 .adminButton {
   background-color: #00000010;
@@ -139,7 +142,7 @@ hr {
 }
 .homeQuote {
   text-align: center;
-  color: #00000020;
+  color: #00000050;
   padding-top: 20px;
 }
 .centerLoading {
