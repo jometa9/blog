@@ -11,7 +11,7 @@ export default function HomeLinks() {
           Instagram
         </a>
         <a
-          href="https://www.youtube.com/@jometayer"
+          href="https://www.youtube.com/@joaquinmetayer"
           target="_blank"
           className="homeLinksLink"
         >
