@@ -25,7 +25,7 @@ export default function HomeLinks() {
           LinkedIn
         </a>
       </div>
-      <p className="homeQuote">building the future</p>
+      <p className="homeQuote">growth log</p>
     </div>
   );
 }
