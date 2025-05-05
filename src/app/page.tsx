@@ -5,10 +5,11 @@ import './jometa.css'
 
 export default function Home() {
   const { posts } = getPostMetadata();
+  const totalPosts = posts.filter(post => post.visible).length;
 
   return (
     <>
-      <HomeLinks />
+      <HomeLinks totalPosts={totalPosts} />
       <BlogHome posts={posts} />
     </>
   );

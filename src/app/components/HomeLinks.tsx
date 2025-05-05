@@ -1,4 +1,8 @@
-export default function HomeLinks() {
+interface HomeLinksProps {
+  totalPosts?: number;
+}
+
+export default function HomeLinks({ totalPosts = 0 }: HomeLinksProps) {
   return (
     <div className="homeLinksContainer">
       <h1 className="homeLinksTitle">jometa</h1>
@@ -25,7 +29,7 @@ export default function HomeLinks() {
           LinkedIn
         </a>
       </div>
-      <p className="homeQuote">growth log</p>
+      <p className="homeQuote">growth log - {totalPosts} posts</p>
     </div>
   );
 }

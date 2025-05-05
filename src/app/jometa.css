@@ -9,6 +9,7 @@ body {
   max-width: 800px;
   padding: 0px 30px 30px 30px;
   margin: 0 auto;
+  padding-bottom: 20vh;
 }
 img {
   width: 100%;
@@ -55,7 +56,7 @@ hr {
   flex-shrink: 0;
 }
 .footerDate {
-  padding: 20px 0 20px;
+  padding: 0 0 20px;
   color: #00000050;
 }
 .homeLinksTitle {
@@ -74,5 +75,16 @@ hr {
   text-decoration: none;
 }
 .homeQuote {
+  padding-top: 5px;
   color: #00000050;
 }
+.homeLinksContainer{
+  min-height: 50vh;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+/* Estilos para secciones por año */

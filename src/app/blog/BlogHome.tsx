@@ -12,8 +12,13 @@ const parseDate = (dateString: string) => {
   return new Date(year, month - 1, day);
 };
 
+const getYearFromDate = (dateString: string) => {
+  return dateString.split("-")[2];
+};
+
 const BlogHome: React.FC<SearchablePostsProps> = ({ posts = [] }) => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [expandedYears, setExpandedYears] = useState<{[key: string]: boolean}>({});
   const today = new Date();
 
   const filteredPosts = posts
@@ -25,18 +30,69 @@ const BlogHome: React.FC<SearchablePostsProps> = ({ posts = [] }) => {
       return postDate <= today;
     })
     .filter((post) => post.visible);
+
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
   };
 
-  const postPreviews = filteredPosts.map((post) => (
-    <PostPreview key={post.slug} {...post} />
-  ));
+  // Agrupar posts por año
+  const postsByYear: {[key: string]: PostMetadata[]} = {};
+  filteredPosts.forEach(post => {
+    const year = getYearFromDate(post.date);
+    if (!postsByYear[year]) {
+      postsByYear[year] = [];
+    }
+    postsByYear[year].push(post);
+  });
+
+  // Ordenar años en orden descendente
+  const years = Object.keys(postsByYear).sort((a, b) => parseInt(b) - parseInt(a));
+
+  // Toggle para expandir/colapsar un año
+  const toggleYear = (year: string) => {
+    setExpandedYears(prev => ({
+      ...prev,
+      [year]: !prev[year]
+    }));
+  };
+
+  // Inicializar todos los años como expandidos si expandedYears está vacío
+  if (Object.keys(expandedYears).length === 0 && years.length > 0) {
+    const initialState: {[key: string]: boolean} = {};
+    const currentYear = new Date().getFullYear().toString();
+    
+    years.forEach(year => {
+      initialState[year] = year === currentYear; // Solo expandir el año actual
+    });
+    setExpandedYears(initialState);
+  }
 
   return (
     <span id="blog">
       <hr />
-      {postPreviews}
+      {years.map(year => (
+        <div key={year} className="year-section">
+          <div 
+            className="year-header" 
+            onClick={() => toggleYear(year)}
+            style={{ cursor: 'pointer' }}
+          >
+            <p style={{textAlign: 'center'}}>{year} - {postsByYear[year].length} posts{" "}
+              - {expandedYears[year] ? 'hide' : 'show'}
+              </p>
+          </div>
+          {expandedYears[year] && (
+            <div className="year-posts">
+              <hr />
+              {postsByYear[year].map(post => (
+                <PostPreview key={post.slug} {...post} />
+              ))}
+            </div>
+          )}
+      <hr />
+
+        </div>
+      ))}
     </span>
   );
 };
