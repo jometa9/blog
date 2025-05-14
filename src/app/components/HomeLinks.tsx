@@ -29,7 +29,7 @@ export default function HomeLinks({ totalPosts = 0 }: HomeLinksProps) {
           LinkedIn
         </a>
       </div>
-      <p className="homeQuote">growth log - {totalPosts} posts</p>
+      <p className="homeQuote">{totalPosts} posts</p>
     </div>
   );
 }
