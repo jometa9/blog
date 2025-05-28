@@ -51,9 +51,10 @@ hr {
   text-decoration: none;
 }
 .postPreview span,
-.quoteView span {
+.quoteView {
   white-space: nowrap;
   flex-shrink: 0;
+  color: #00000050;
 }
 .footerDate {
   padding: 0 0 20px;

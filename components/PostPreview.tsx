@@ -12,10 +12,10 @@ const PostPreview = (props: PostMetadata) => {
       <span>{props.date}</span>
     </p>
   ) : (
-    <p className="quoteView">
-        {props.title}
-      <span>{props.date}</span>
-    </p>
+    <p className="postPreview">
+      <span className="quoteView">{props.title}</span>
+      <span className="quoteView">{props.date}</span>
+  </p>
   );
 };
 
