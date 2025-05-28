@@ -15,39 +15,35 @@ function executeGitCommand(command) {
         execSync(command, { stdio: 'inherit' });
         return true;
     } catch (error) {
-        console.error(`Error ejecutando comando git: ${command}`);
+        console.error(`Error executing git command: ${command}`);
         console.error(error.message);
         return false;
     }
 }
 
 async function gitOperations(fileName) {
-    console.log('\nRealizando operaciones de Git...');
+    console.log('\nPerforming Git operations...');
     
-    // Git pull
-    console.log('\nHaciendo pull de los cambios...');
+    console.log('\nPulling latest changes...');
     if (!executeGitCommand('git pull')) {
-        console.log('Error al hacer pull. Continuando con el commit...');
+        console.log('Error pulling changes. Continuing with commit...');
     }
     
-    // Git add
-    console.log('\nAgregando archivo al staging...');
+    console.log('\nAdding file to staging...');
     if (!executeGitCommand(`git add posts/${fileName}`)) {
-        console.log('Error al agregar el archivo al staging.');
+        console.log('Error adding file to staging.');
         return false;
     }
     
-    // Git commit
-    console.log('\nCreando commit...');
-    if (!executeGitCommand(`git commit -m "feat: nuevo post ${fileName}"`)) {
-        console.log('Error al crear el commit.');
+    console.log('\nCreating commit...');
+    if (!executeGitCommand(`git commit -m "feat: new post ${fileName}"`)) {
+        console.log('Error creating commit.');
         return false;
     }
     
-    // Git push
-    console.log('\nHaciendo push de los cambios...');
+    console.log('\nPushing changes...');
     if (!executeGitCommand('git push')) {
-        console.log('Error al hacer push.');
+        console.log('Error pushing changes.');
         return false;
     }
     
@@ -70,21 +66,21 @@ function getUniqueFileName(baseFileName) {
 
 async function getContentType() {
     while (true) {
-        console.log('\nSeleccione el tipo de contenido:');
-        console.log('1. Texto Markdown');
-        console.log('2. Quote (solo título, se mostrará en gris y no será clickeable)');
-        console.log('3. Video de YouTube');
-        const choice = await question('Seleccione una opción (1-3): ');
+        console.log('\nSelect content type:');
+        console.log('1. Markdown Text');
+        console.log('2. Quote (title only, will be displayed in gray and not clickable)');
+        console.log('3. YouTube Video');
+        const choice = await question('Select an option (1-3): ');
         
         if (['1', '2', '3'].includes(choice)) {
             return choice;
         }
-        console.log('Opción inválida. Por favor seleccione 1, 2 o 3.');
+        console.log('Invalid option. Please select 1, 2, or 3.');
     }
 }
 
 async function getMarkdownContent() {
-    console.log('\nEscriba el contenido en Markdown (presione Enter dos veces para finalizar):');
+    console.log('\nWrite your content in Markdown (press Enter twice to finish):');
     let content = '';
     let emptyLines = 0;
     
@@ -101,10 +97,10 @@ async function getMarkdownContent() {
 }
 
 async function getYouTubeContent() {
-    const youtubeUrl = await question('URL de YouTube: ');
+    const youtubeUrl = await question('YouTube URL: ');
     const videoId = youtubeUrl.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/)?.[1];
     if (!videoId) {
-        console.log('URL de YouTube inválida.');
+        console.log('Invalid YouTube URL.');
         return '';
     }
     return `<iframe src="https://www.youtube.com/embed/${videoId}" allowfullscreen></iframe>`;
@@ -112,34 +108,27 @@ async function getYouTubeContent() {
 
 async function createPost() {
     try {
-        // Solicitar título
-        const title = await question('Título del post: ');
-        
-        // Solicitar fecha
+        const title = await question('Post title: ');
         let date;
         while (true) {
-            date = await question('Fecha (formato DD-MM-YYYY): ');
+            date = await question('Date (format DD-MM-YYYY): ');
             if (/^\d{2}-\d{2}-\d{4}$/.test(date)) {
                 break;
             }
-            console.log('Formato de fecha inválido. Use DD-MM-YYYY');
+            console.log('Invalid date format. Use DD-MM-YYYY');
         }
         
-        // Solicitar visibilidad
         let visible;
         while (true) {
-            const visibleInput = (await question('¿Post visible? (s/n): ')).toLowerCase();
-            if (visibleInput === 's' || visibleInput === 'n') {
-                visible = visibleInput === 's';
+            const visibleInput = (await question('Is post visible? (y/n): ')).toLowerCase();
+            if (visibleInput === 'y' || visibleInput === 'n') {
+                visible = visibleInput === 'y';
                 break;
             }
-            console.log('Por favor responda con "s" o "n"');
+            console.log('Please answer with "y" or "n"');
         }
         
-        // Obtener el tipo de contenido
         const contentType = await getContentType();
-        
-        // Obtener el contenido según el tipo seleccionado
         let content = '';
         let isQuote = false;
         
@@ -149,14 +138,13 @@ async function createPost() {
                 break;
             case '2':
                 isQuote = true;
-                content = ''; // No necesitamos contenido para quotes
+                content = '';
                 break;
             case '3':
                 content = await getYouTubeContent();
                 break;
         }
         
-        // Crear el contenido del post
         let postContent = `---
 date: "${date}"
 title: "${title}"
@@ -165,27 +153,23 @@ quote: ${isQuote}
 slug: "${date.split('-').reverse().join('')}"
 ---\n\n${content}`;
         
-        // Crear nombre del archivo base
         const baseFileName = `${date.split('-').reverse().join('')}.md`;
         
-        // Obtener un nombre de archivo único
         const fileName = getUniqueFileName(baseFileName);
         const filePath = path.join(__dirname, '..', 'posts', fileName);
         
-        // Guardar el archivo
         fs.writeFileSync(filePath, postContent);
-        console.log(`\n¡Post creado exitosamente!\nRuta: ${filePath}`);
+        console.log(`\nPost created successfully!\nPath: ${filePath}`);
         
-        // Realizar operaciones de Git
         const gitSuccess = await gitOperations(fileName);
         if (gitSuccess) {
-            console.log('\n¡Operaciones de Git completadas con éxito!');
+            console.log('\nGit operations completed successfully!');
         } else {
-            console.log('\nHubo algunos errores en las operaciones de Git. Por favor, verifica manualmente.');
+            console.log('\nThere were some errors in Git operations. Please check manually.');
         }
         
     } catch (error) {
-        console.error('Error al crear el post:', error);
+        console.error('Error creating post:', error);
     } finally {
         rl.close();
     }
