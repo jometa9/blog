@@ -16,13 +16,6 @@ export default function HomeLinks({ totalPosts = 0 }: HomeLinksProps) {
             Instagram
           </a>
           <a
-            href="https://www.youtube.com/@joaquinmetayer"
-            target="_blank"
-            className="homeLinksLink"
-          >
-            Youtube
-          </a>
-          <a
             href="https://www.linkedin.com/in/joaquinmetayer"
             target="_blank"
             className="homeLinksLink"
