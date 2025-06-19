@@ -8,8 +8,8 @@
 body {
   max-width: 800px;
   padding: 0px 30px 30px 30px;
-  margin: 0 auto;
-  padding-bottom: 20vh;
+  margin: 0;
+  padding-bottom: 10px;
 }
 img {
   width: 100%;
@@ -62,11 +62,15 @@ hr {
 }
 .homeLinksTitle {
   font-size: 30px;
+  margin: 0;
 }
 .homeLinksLinkContainer {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+}
+.homeLinksImage {
+  width: 300px;
+  margin: 10px 0 20px 0;
 }
 .homeLinksLink {
   text-decoration: none;
@@ -79,12 +83,7 @@ hr {
   color: #00000050;
 }
 .homeLinksContainer{
-  min-height: 50vh;
   padding-top: 20px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
 }
-/* Estilos para secciones por año */
