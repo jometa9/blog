@@ -13,7 +13,7 @@ const PostPreview = (props: PostMetadata) => {
     </p>
   ) : (
     <p className="postPreview">
-      <span className="quoteView">{props.title}</span>
+      <span className="quoteViewTitle">{props.title}</span>
       <span className="quoteView">{props.date}</span>
   </p>
   );

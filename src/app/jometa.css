@@ -50,11 +50,23 @@ hr {
   font-style: none;
   text-decoration: none;
 }
-.postPreview span,
+.postPreview span {
+  white-space: nowrap;
+  flex-shrink: 0;
+  color: #00000050;
+}
 .quoteView {
   white-space: nowrap;
   flex-shrink: 0;
   color: #00000050;
+}
+.quoteViewTitle {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #00000050;
+  flex: 1;
+  min-width: 0;
 }
 .footerDate {
   padding: 0 0 20px;
