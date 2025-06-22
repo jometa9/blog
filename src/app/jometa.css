@@ -93,6 +93,9 @@ hr {
 .blogHeaderTitle {
   text-decoration: none;
 }
+h2{
+  padding-top: 10px;
+}
 .homeQuote {
   color: #00000050;
 }

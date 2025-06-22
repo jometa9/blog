@@ -4,4 +4,5 @@ export interface PostMetadata {
   visible: string;
   quote: string
   slug: string;
+  youtubeUrl?: string;
 }
