@@ -1,11 +1,27 @@
+import Link from "next/link";
+
 interface HomeLinksProps {
   totalPosts?: number;
 }
 
 export default function HomeLinks({ totalPosts = 0 }: HomeLinksProps) {
   return (
-    <div className="homeLinksContainer">
-      <img src="/blog/images/503594213_18282697036265318_1350656707529109940_n.jpg" alt="jometa" className="homeLinksImage" />
-    </div>
+      <div className="homeLinksContent">
+        <h2 className="homeLinksTitle">Joaquin Metayer</h2>
+        <p className="homeQuote">
+          fixing internet problems
+        </p>
+        <div className="homeLinksContainer">
+          <a href="https://www.linkedin.com/in/joaquinmetayer/" className="homeLinksLink">
+            Linkedin
+          </a>
+          <a href="https://github.com/jometa9" className="homeLinksLink">
+            Github
+          </a>
+          <a href="https://www.instagram.com/_jometa/" className="homeLinksLink">
+            Instagram
+          </a>
+        </div>
+      </div>
   );
 }

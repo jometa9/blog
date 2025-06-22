@@ -7,8 +7,9 @@
 }
 body {
   max-width: 800px;
+
   padding: 0px 30px 30px 30px;
-  margin: 0;
+  margin: 0 auto;
   padding-bottom: 10px;
 }
 img {
@@ -73,15 +74,16 @@ hr {
   color: #00000050;
 }
 .homeLinksTitle {
-  font-size: 30px;
+  font-size: 20px;
   margin: 0;
+  padding-top: 30px;
 }
 .homeLinksLinkContainer {
   display: flex;
   flex-wrap: wrap;
 }
 .homeLinksImage {
-  width: 300px;
+  width: 200px;
   margin: 10px 0 20px 0;
 }
 .homeLinksLink {
@@ -95,7 +97,9 @@ hr {
   color: #00000050;
 }
 .homeLinksContainer{
-  padding-top: 20px;
+  margin: 0;
+  padding: 0;
   display: flex;
-  flex-direction: column;
+  gap: 10px;
+  padding-bottom: 20px;
 }
